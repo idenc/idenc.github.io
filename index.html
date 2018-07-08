@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="Iden Craven info and resume">
-    <meta name="keywords" content="Iden Craven, coding, projects, resume">
-    <meta name="author" content="Iden Craven">
-    <title>Iden Craven | Welcome</title>
-    <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div id="name">
-          <h1><span class="highlight">Iden </span>Craven</h1>
-        </div>
-        <nav>
-          <ul>
-            <li class="current"><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
 
-    <section id="showcase">
-      <div class="container">
-        <h1>Welcome!</h1>
-        <p>Hi, I'm Iden Craven, a Computer Science student at the University of Calgary.</p>
-      </div>
-    </section>
+<head>
+  {% include head.html %} {% seo %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="Iden Craven info and resume">
+  <meta name="keywords" content="Iden Craven, coding, projects, resume">
+  <meta name="author" content="Iden Craven">
+  <title>Iden Craven | Welcome</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
 
-    <section id = "boxes">
-      <div class="container">
-        <div class="box">
-          <img src="./img/UofC.png">
-          <h3>Student at the University of Calgary</h3>
-        </div>
+<body>
+  <header>
+    <div class="container">
+      <div id="name">
+        <h1><span class="highlight">Iden </span>Craven</h1>
       </div>
-    </section>
+      <nav>
+        <ul>
+          <li class="current"><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <footer>
-      <h3>Iden Craven, 2018</h3>
-      <p>(250) 895-1041</p>
-      <address>
+  <section id="showcase">
+    <div class="container">
+      <h1>Welcome!</h1>
+      <p>Hi, I'm Iden Craven, a Computer Science student at the University of Calgary.</p>
+    </div>
+  </section>
+
+  <section id="boxes">
+    <div class="container">
+      <div class="box">
+        <img src="./img/UofC.png">
+        <h3>Student at the University of Calgary</h3>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Iden Craven, 2018</h3>
+    <p>(250) 895-1041</p>
+    <address>
         <a href="mailto:iden.craven@gmail.com">iden.craven@gmail.com</a>
       </address>
-    </footer>
-  </body>
+  </footer>
+</body>
+
 </html>
