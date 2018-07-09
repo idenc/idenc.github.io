@@ -70,6 +70,7 @@ header a:hover{
 #showcase{
   background: url('../img/coffee.gif') no-repeat;
   height: 100vh;
+  width: 100%;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -95,10 +96,8 @@ header a:hover{
 }
 
 #boxes .box{
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  align-items: center;
+  width: 30%;
   padding: 10px;
   font-size: 15px;
   color: #ffffff;
@@ -118,4 +117,24 @@ footer{
   margin-bottom: 20px;
   color: #ffffff;
   text-align: center;
+}
+
+/* Media Queries */
+@media(max-width: 768px) {
+  header #name,
+  header nav,
+  header nav li,
+  #boxes .box{
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  header{
+    padding-bottom: 20px;
+  }
+
+  #Showcase h1{
+    margin-top: 40px;
+  }
 }
