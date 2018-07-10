@@ -98,13 +98,12 @@ header a:hover{
 #boxes .box{
   text-align: center;
   padding: 10px;
-  font-size: 15px;
+  font-size: 14px;
   color: #ffffff;
 }
 
 #boxes .box img{
   width: 180px;
-  text-align: center;
 }
 
 iframe{
