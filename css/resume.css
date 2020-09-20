@@ -1,0 +1,18 @@
+#resumeBody {
+    background: #f0f0f0;
+    font-family: 'Lato', serif;
+    color: #1C1E22;
+}
+
+#profilePic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: block;
+}
+
+#aside-box {
+    min-width: 25%;
+    float: left;
+}

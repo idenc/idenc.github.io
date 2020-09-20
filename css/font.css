@@ -1,0 +1,43 @@
+/* CSS based off https://codepen.io/boldfacedesign/pen/EoGgD */
+
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
+
+:root {
+    --main-color: #FF0FF8;
+    --secondary-color: #F3C8F3;
+    --shadow-color: #f008b7
+}
+
+.victory {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    font-variant: small-caps;
+    font-size: 180px;
+    -webkit-transform: skew(-15deg, -15deg);
+    padding-left: 80px;
+    background-image: -webkit-linear-gradient(var(--main-color), #f9f9f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    -webkit-filter: drop-shadow(2px 2px 20px var(--shadow-color));
+}
+
+.victory:before {
+    content: '-';
+    position: absolute;
+    bottom: -85px;
+    left: 511px;
+    background-image: -webkit-linear-gradient(var(--secondary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    text-shadow: 70px -7px var(--secondary-color);
+}
+
+.victory:after {
+    content: '----';
+    position: absolute;
+    bottom: -74px;
+    left: 663px;
+    background-image: -webkit-linear-gradient(var(--secondary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    text-shadow: 70px -5px var(--secondary-color);
+}
