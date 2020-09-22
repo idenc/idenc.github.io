@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow:400,500,700|Tomorrow:400,700&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 :root {
     --gradient-start: #08082e;
     --gradient-end: #140d4c;
-    --yellow-color: #111026CC;
-    --red-color: #ff003c;
-    --black-color: #050a0e;
+    --intro-color: #111026CC;
     --blue-color: #00f0ff;
-    --white-color: #fafafa;
+    --main-color: #FF0FF8;
+    --secondary-color: #F3C8F3;
+    --shadow-color: #f008b7
 }
 
 body {
@@ -79,6 +80,24 @@ header a:hover {
 }
 
 /* Showcase */
+
+/* CSS based off https://codepen.io/boldfacedesign/pen/EoGgD */
+
+.welcome {
+    position: relative;
+    font-family: 'Permanent Marker', cursive;
+    font-variant: small-caps;
+    font-size: 180px;
+    -webkit-transform: skew(-15deg, -15deg);
+    padding-left: 80px;
+    background-image: -webkit-linear-gradient(var(--main-color), #f9f9f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    -webkit-filter: drop-shadow(2px 2px 20px var(--shadow-color));
+}
+
+
 #showcase {
     height: 100vh;
     width: 100%;
@@ -122,6 +141,7 @@ header a:hover {
 iframe {
     height: 100vh;
     width: 100%;
+    border: none;
 }
 
 /* Intro styling from https://dev.to/leandroruel/how-to-make-a-cyberpunk-2077-button-with-css-c9m*/
@@ -159,7 +179,7 @@ iframe {
     left: 2px;
     right: 2px;
     bottom: 2px;
-    background-color: var(--yellow-color);
+    background-color: var(--intro-color);
     clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 
@@ -169,7 +189,7 @@ iframe {
     bottom: -1px;
     right: 8%;
     padding: 0 5px;
-    background-color: var(--yellow-color);
+    background-color: var(--intro-color);
     z-index: 3;
     border-left: 1px solid var(--blue-color);
 }
@@ -181,7 +201,7 @@ iframe {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--yellow-color);
+    background-color: var(--intro-color);
     filter: drop-shadow(-2px 3px white) drop-shadow(-1px -3px #ffffff) drop-shadow(2px 1px white);
 }
 
@@ -262,6 +282,60 @@ footer {
     width: 100%;
     height: 100%;
 }
+
+/* Resume */
+
+#resumeBody {
+    font-family: 'Lato', serif;
+    color: white;
+}
+
+#profilePic {
+    padding-top: 10px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: block;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+#aside-box {
+    width: calc(100% - 20px);
+    float: left;
+    text-align: center;
+    margin: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #0D0D0D;
+}
+
+.main {
+    padding: 10px;
+    margin: 10px 10px 10px 310px;
+    background-color: #0D0D0D;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+.main ul {
+    list-style-type: circle;
+    padding-left: 40px;
+}
+
+.bolded {
+    font-weight: bold;
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {
