@@ -41,6 +41,7 @@ header {
     padding-top: 30px;
     min-height: 70px;
     border-bottom: #D948C1 3px solid;
+    z-index: 100;
 }
 
 header a {
@@ -77,6 +78,18 @@ header .highlight, header .current a {
 header a:hover {
     color: #3DDCEF;
     font-weight: bold;
+}
+
+/* Header scrolling */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + .content {
+    padding-top: 102px;
 }
 
 /* Showcase */
@@ -288,6 +301,10 @@ footer {
 #resumeBody {
     font-family: 'Lato', serif;
     color: white;
+}
+
+#resume {
+    width: 100%;
 }
 
 #profilePic {
