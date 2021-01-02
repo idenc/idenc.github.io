@@ -362,12 +362,14 @@ footer {
 }
 
 .project-item {
-    flex: 1;
-
 }
 
 .project-item a {
     margin-right: 20px;
+}
+
+.project-item img {
+    max-height: 60vh;
 }
 
 .project-link {
