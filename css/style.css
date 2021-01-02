@@ -353,6 +353,30 @@ footer {
     font-weight: bold;
 }
 
+/* Projects */
+#project-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-item {
+    flex: 1;
+
+}
+
+.project-item a {
+    margin-right: 20px;
+}
+
+.project-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {
