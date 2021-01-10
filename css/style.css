@@ -104,10 +104,6 @@ ul {
     width: 100%;
 }
 
-.sticky + .content {
-    padding-top: 102px;
-}
-
 /* Showcase */
 
 /* CSS based off https://codepen.io/boldfacedesign/pen/EoGgD */
@@ -144,7 +140,7 @@ ul {
 }
 
 #showcase p {
-    font-size: 20px;
+    margin: 0;
 }
 
 /* Box */
@@ -414,5 +410,14 @@ hr {
 
     .into {
         width: auto;
+    }
+
+    .intro {
+        width: 100%;
+    }
+
+    .welcome {
+        font-size: 50px;
+        padding: 0;
     }
 }

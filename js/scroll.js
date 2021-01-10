@@ -6,6 +6,12 @@ window.onscroll = function () {
 // Get the header
 const header = document.getElementsByTagName('header')[0];
 
+window.onload = () => {
+    const sheet = window.document.styleSheets[0];
+    sheet.insertRule(`.sticky + .content { padding-top: ${header.offsetHeight}px }`,
+        sheet.cssRules.length);
+}
+
 // Get the offset position of the navbar
 const sticky = header.offsetTop;
 
