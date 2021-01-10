@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Iden Craven info and resume">
     <meta name="keywords" content="Iden Craven, coding, projects, resume">
     <meta name="author" content="Iden Craven">
-    <title>My Hobbies</title>
+    <title>Iden Craven | Projects</title>
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/hover.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-<header>
+<header id="header">
     <div class="container">
         <div id="name">
             <h1><span class="highlight">Iden </span>Craven</h1>
@@ -35,13 +37,38 @@
             <h1>Iden's Projects</h1>
             <hr>
             <div id="project-container">
-                <div class="project-item">
-                    <img src="./img/minesweeper.PNG" alt="Minesweeper">
-                    <div class="project-link">
-                        <a href="https://idenc.gitlab.io/minesweeper/">Minesweeper</a>
-                        <a href="https://gitlab.com/idenc/minesweeper">(Gitlab)</a>
+                <div class="project-item hovereffect">
+                    <img src="./img/minesweeper.PNG" alt="Minesweeper" class="img-responsive">
+                    <div class="overlay">
+                        <h2>Minesweeper</h2>
+                        <p>
+                            Minesweeper written using JQuery
+                            <a href="https://gitlab.com/idenc/minesweeper">(Project Link)</a>
+                        </p>
                     </div>
-
+                </div>
+                <hr>
+                <div class="project-item hovereffect">
+                    <img src="./img/catan_board.PNG" alt="catan" class="img-responsive">
+                    <div class="overlay">
+                        <h2>CatanJS</h2>
+                        <p>
+                            An online multiplayer Catan clone using Vue.js as the frontend and Node.js as the backend
+                            <a href="https://github.com/idenc/CatanJS">(Project Link)</a>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="project-item hovereffect">
+                    <img src="./img/snapceit.gif" alt="Snapceit" class="img-responsive">
+                    <div class="overlay">
+                        <h2>Snapceit</h2>
+                        <p style="font-size: 17px">
+                            An Android app which utilizes Google's MLKit to perform character recognition on
+                            receipts to allow quick and easy bill-splitting between multiple people.
+                            <a href="https://github.com/idenc/snapceit">(Project Link)</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,7 +96,14 @@
     </footer>
 </div>
 
-<script src="scroll.js"></script>
+<script src="js/scroll.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
 

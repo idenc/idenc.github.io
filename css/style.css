@@ -19,11 +19,14 @@ body {
     color: white;
 }
 
+
 /* Global */
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    padding: 0;
+    max-width: inherit;
 }
 
 ul {
@@ -31,8 +34,8 @@ ul {
     padding: 0;
 }
 
-/* Header */
-header {
+/* #header */
+#header {
     background: var(--gradient-start); /* Old browsers */
     background: -moz-linear-gradient(left, var(--gradient-start) 0%, var(--gradient-end) 45%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, var(--gradient-start) 0%, var(--gradient-end) 45%); /* Chrome10-25,Safari5.1-6 */
@@ -42,45 +45,58 @@ header {
     min-height: 70px;
     border-bottom: #D948C1 3px solid;
     z-index: 100;
+    box-sizing: initial;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-header a {
+#header * {
+    box-sizing: initial;
+    font-size: revert;
+}
+
+#header a {
     color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16px;
 }
 
-header li {
+#header li {
     float: left;
     display: inline;
     padding: 0 20px 0 20px;
 }
 
-header #name {
+#header #name {
     float: left;
 }
 
-header #name h1 {
+#header #name h1 {
     margin: 0;
 }
 
-header nav {
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+#header nav {
     float: right;
     margin-top: 10px;
 }
 
-header .highlight, header .current a {
+#header .highlight, #header .current a {
     color: #D948C1;
     font-weight: bold;
 }
 
-header a:hover {
+#header a:hover {
     color: #3DDCEF;
     font-weight: bold;
 }
 
-/* Header scrolling */
+/* #header scrolling */
 
 .sticky {
     position: fixed;
@@ -361,15 +377,9 @@ footer {
     align-items: center;
 }
 
-.project-item {
-}
-
-.project-item a {
-    margin-right: 20px;
-}
-
 .project-item img {
     max-height: 60vh;
+    max-width: 100%;
 }
 
 .project-link {
@@ -379,23 +389,30 @@ footer {
     font-size: 40px;
 }
 
+hr {
+    width: 100%;
+}
 
 /* Media Queries */
 @media (max-width: 768px) {
-    header #name,
-    header nav,
-    header nav li,
+    #header #name,
+    #header nav,
+    #header nav li,
     #boxes .box {
         float: none;
         text-align: center;
         width: 100%;
     }
 
-    header {
+    #header {
         padding-bottom: 20px;
     }
 
     #Showcase h1 {
         margin-top: 40px;
+    }
+
+    .into {
+        width: auto;
     }
 }
