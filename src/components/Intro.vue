@@ -20,8 +20,19 @@
 </template>
 
 <script>
+import ScrollReveal from 'scrollreveal'
+
 export default {
-  name: "Intro"
+  name: "Intro",
+  mounted: function () {
+    const reveal = {
+      origin: 'left',
+      delay: 200,
+      distance: '120px',
+      easing: 'ease-in-out',
+    };
+    ScrollReveal().reveal('#intro-text', reveal);
+  }
 }
 </script>
 

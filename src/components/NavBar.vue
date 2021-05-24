@@ -27,8 +27,6 @@ export default {
 
 <style scoped>
 #root {
-  /*background: url("../assets/forest.jpg") no-repeat fixed center;*/
-  /*background-size: cover;*/
   display: flex;
   height: 100%;
   justify-content: space-between;

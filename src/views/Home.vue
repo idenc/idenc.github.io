@@ -27,17 +27,15 @@ export default {
   background: url("../assets/forest.jpg") no-repeat fixed center;
   background-size: cover;
   display: flex;
-  position: relative;
-  overflow: hidden;
 }
 
 .moving-clouds {
-  background-image: url("../assets/clouds.png");
+  background: url("../assets/clouds.png") repeat-x;
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 250.625em;
-  height: 100%;
+  width: 100%;
+  height: 43.75em;
   -webkit-animation: cloudLoop 100000s linear infinite;
   animation: cloudLoop 100000s linear infinite;
 }
@@ -47,7 +45,7 @@ export default {
     background-position: 0 0;
   }
   100% {
-    background-position: 3000000px 0;
+    background-position: 10000000px 0;
   }
 }
 

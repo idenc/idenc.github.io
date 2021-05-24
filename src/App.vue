@@ -71,8 +71,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   width: 100%;
   margin: 0;
@@ -81,10 +79,13 @@ body {
 #nav {
   width: 100%;
   height: 80px;
+  position: absolute;
+  z-index: 1;
 }
 
 #router-view {
-  flex: 1;
+  height: 100%;
+  width: 100%;
 }
 
 #nav a {
