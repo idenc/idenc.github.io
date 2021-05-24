@@ -2,38 +2,38 @@
   <div id="intro">
     <div id="intro-text">
       <p>Hi, I'm</p>
-      <p id="name">
-        Iden.
-      </p>
-      <div id="job-title">
-        Software Developer
-      </div>
+      <p id="name">Iden.</p>
+      <div id="job-title">Software Developer</div>
     </div>
     <div id="pic-div">
-      <img
-        id="profile-pic"
-        alt="profile picture"
-        src="../assets/me.jpg"
-      >
+      <img id="profile-pic" alt="profile picture" src="../assets/img/me.jpg" />
     </div>
   </div>
 </template>
 
 <script>
-import ScrollReveal from 'scrollreveal'
+import ScrollReveal from "scrollreveal";
 
 export default {
   name: "Intro",
   mounted: function () {
-    const reveal = {
-      origin: 'left',
+    const textReveal = {
+      origin: "left",
       delay: 200,
-      distance: '120px',
-      easing: 'ease-in-out',
+      distance: "120px",
+      easing: "ease-in-out",
     };
-    ScrollReveal().reveal('#intro-text', reveal);
-  }
-}
+    ScrollReveal().reveal("#intro-text", textReveal);
+
+    const imgReveal = {
+      origin: "right",
+      delay: 200,
+      distance: "120px",
+      easing: "ease-in-out",
+    };
+    ScrollReveal().reveal("#pic-div", imgReveal);
+  },
+};
 </script>
 
 <style scoped>

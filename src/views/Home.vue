@@ -1,37 +1,51 @@
 <template>
   <div class="home">
+    <div id="background" />
+    <div class="moving-clouds" />
     <Intro id="intro" />
-    <div
-      class="moving-clouds"
-    />
+    <Portfolio />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Intro from '@/components/Intro'
+import Intro from "@/components/Intro";
+import Portfolio from "@/components/Portfolio";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Intro
+    // eslint-disable-next-line vue/no-unused-components
+    Portfolio,
+    Intro,
   },
   mounted: function () {
-    document.title = this.$titlePrefix + "Home"
-  }
-}
+    document.title = this.$titlePrefix + "Home";
+  },
+};
 </script>
 
 <style scoped>
 .home {
-  background: url("../assets/forest.jpg") no-repeat fixed center;
-  background-size: cover;
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#background {
+  z-index: -1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: url("../assets/img/forest.jpg");
+  background-size: cover;
 }
 
 .moving-clouds {
-  background: url("../assets/clouds.png") repeat-x;
-  position: absolute;
+  background: url("../assets/img/clouds.png") repeat-x;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -51,6 +65,7 @@ export default {
 
 #intro {
   width: 100%;
+  margin: 0;
   z-index: 1;
 }
 </style>

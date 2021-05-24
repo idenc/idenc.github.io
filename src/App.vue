@@ -8,8 +8,8 @@
 <script>
 import NavBar from "@/components/NavBar";
 export default {
-  components: {NavBar}
-}
+  components: { NavBar },
+};
 </script>
 
 <style>
@@ -20,7 +20,7 @@ body {
 @font-face {
   font-family: "Araboto-Black";
   src: local("Araboto-Black"),
-  url('./assets/fonts/Araboto-Black.ttf') format("truetype");
+    url("./assets/fonts/Araboto-Black.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -28,7 +28,7 @@ body {
 @font-face {
   font-family: "Araboto-Bold";
   src: local("Araboto-Bold"),
-  url('./assets/fonts/Araboto-Bold.ttf') format("truetype");
+    url("./assets/fonts/Araboto-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -36,7 +36,7 @@ body {
 @font-face {
   font-family: "Araboto-Light";
   src: local("Araboto-Light"),
-  url('./assets/fonts/Araboto-Light.ttf') format("truetype");
+    url("./assets/fonts/Araboto-Light.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -44,7 +44,7 @@ body {
 @font-face {
   font-family: "Araboto-Medium";
   src: local("Araboto-Medium"),
-  url('./assets/fonts/Araboto-Medium.ttf') format("truetype");
+    url("./assets/fonts/Araboto-Medium.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -52,7 +52,7 @@ body {
 @font-face {
   font-family: "Araboto-Normal";
   src: local("Araboto-Normal"),
-  url('./assets/fonts/Araboto-Normal.ttf') format("truetype");
+    url("./assets/fonts/Araboto-Normal.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -60,7 +60,7 @@ body {
 @font-face {
   font-family: "Araboto-Thin";
   src: local("Araboto-Thin"),
-  url('./assets/fonts/Araboto-Thin.ttf') format("truetype");
+    url("./assets/fonts/Araboto-Thin.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

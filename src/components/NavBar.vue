@@ -1,19 +1,11 @@
 <template>
   <div>
     <div id="root">
-      <img
-        id="logo"
-        alt="logo"
-        src="../assets/logo.png"
-      >
+      <img id="logo" alt="logo" src="../assets/img/logo.png" />
       <div id="links-div">
-        <router-link to="/">
-          Home
-        </router-link>
+        <router-link to="/"> Home </router-link>
         |
-        <router-link to="/about">
-          About
-        </router-link>
+        <router-link to="/about"> About </router-link>
       </div>
     </div>
   </div>
@@ -21,8 +13,8 @@
 
 <script>
 export default {
-  name: "NavBar"
-}
+  name: "NavBar",
+};
 </script>
 
 <style scoped>
