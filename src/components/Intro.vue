@@ -1,7 +1,7 @@
 <template>
   <div id="intro">
     <div id="intro-text">
-      <p>Hi I'm</p>
+      <p>Hi, I'm</p>
       <p id="name">
         Iden.
       </p>
