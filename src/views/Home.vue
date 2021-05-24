@@ -11,6 +11,7 @@
 // @ is an alias to /src
 import Intro from "@/components/Intro";
 import Portfolio from "@/components/Portfolio";
+import $ from "jquery";
 
 export default {
   name: "Home",
@@ -21,6 +22,11 @@ export default {
   },
   mounted: function () {
     document.title = this.$titlePrefix + "Home";
+    const intro = $("#intro");
+    const delta = $(window).height() - (intro.offset().top + intro.height());
+    console.log(delta);
+    intro.css("margin-bottom", `${delta / 2}px`);
+    intro.css("margin-top", `${delta / 2}px`);
   },
 };
 </script>

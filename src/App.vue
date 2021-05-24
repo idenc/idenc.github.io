@@ -7,8 +7,30 @@
 
 <script>
 import NavBar from "@/components/NavBar";
+
 export default {
   components: { NavBar },
+  // mounted: function () {
+  //   // When the user scrolls the page, execute myFunction
+  //   window.onscroll = function () {
+  //     myFunction();
+  //   };
+  //
+  //   // Get the navbar
+  //   const navbar = document.getElementById("nav");
+  //
+  //   // Get the offset position of the navbar
+  //   const sticky = navbar.offsetTop;
+  //
+  //   // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  //   function myFunction() {
+  //     if (window.pageYOffset >= sticky) {
+  //       navbar.classList.add("sticky");
+  //     } else {
+  //       navbar.classList.remove("sticky");
+  //     }
+  //   }
+  // },
 };
 </script>
 
@@ -79,8 +101,10 @@ body {
 #nav {
   width: 100%;
   height: 80px;
-  position: absolute;
   z-index: 1;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
 }
 
 #router-view {
@@ -93,7 +117,14 @@ body {
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 3em;
+  width: 100%;
+  opacity: 75%;
+  font-size: 3em;
 }
 </style>
