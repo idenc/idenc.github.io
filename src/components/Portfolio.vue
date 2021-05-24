@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="heading">Projects</div>
-    <PortfolioItem
-      v-for="project in myProjects"
-      :key="project.title"
-      :project="project"
-    />
+    <div id="items">
+      <PortfolioItem
+        v-for="project in myProjects"
+        :key="project.title"
+        :project="project"
+        class="item"
+      />
+    </div>
   </div>
 </template>
 <script>
@@ -23,4 +26,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item {
+  width: 70vw;
+}
+</style>

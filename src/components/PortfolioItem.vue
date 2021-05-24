@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="root">
     <h1>{{ project.title }}</h1>
     <p>{{ project.description }}</p>
     <img
@@ -18,4 +18,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#root {
+  background: white;
+  border-radius: 2%;
+  padding: 10px;
+}
+</style>

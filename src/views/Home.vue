@@ -2,7 +2,7 @@
   <div class="home">
     <div id="background" />
     <div class="moving-clouds" />
-    <Intro id="intro" />
+    <Intro id="intro" ref="intro" />
     <Portfolio />
   </div>
 </template>
@@ -16,17 +16,26 @@ import $ from "jquery";
 export default {
   name: "Home",
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     Portfolio,
     Intro,
   },
   mounted: function () {
     document.title = this.$titlePrefix + "Home";
-    const intro = $("#intro");
-    const delta = $(window).height() - (intro.offset().top + intro.height());
-    console.log(delta);
-    intro.css("margin-bottom", `${delta / 2}px`);
-    intro.css("margin-top", `${delta / 2}px`);
+    this.introSize();
+    window.addEventListener("resize", () => {
+      this.introSize();
+    });
+  },
+  methods: {
+    introSize: function () {
+      const intro = document.getElementById("intro");
+      const delta = $(window).height() - intro.offsetHeight;
+      console.log(`Height: ${$(window).height()}`);
+      console.log(`bottom: ${intro.offsetHeight}`);
+      console.log(delta);
+      intro.style.marginBottom = `${delta / 2}px`;
+      intro.style.marginTop = `${delta / 2}px`;
+    },
   },
 };
 </script>
@@ -50,6 +59,7 @@ export default {
 }
 
 .moving-clouds {
+  z-index: -1;
   background: url("../assets/img/clouds.png") repeat-x;
   position: fixed;
   bottom: 0;
@@ -72,6 +82,5 @@ export default {
 #intro {
   width: 100%;
   margin: 0;
-  z-index: 1;
 }
 </style>

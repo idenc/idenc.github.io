@@ -40,7 +40,6 @@ export default {
 #intro {
   display: flex;
   justify-content: space-around;
-  margin: 20px;
   align-items: center;
 }
 
