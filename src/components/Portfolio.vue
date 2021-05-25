@@ -32,7 +32,4 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.item {
-  width: 70vw;
-}
 </style>

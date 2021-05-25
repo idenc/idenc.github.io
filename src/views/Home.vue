@@ -21,7 +21,9 @@ export default {
   },
   mounted: function () {
     document.title = this.$titlePrefix + "Home";
-    this.introSize();
+    window.addEventListener("load", () => {
+      this.introSize();
+    });
     window.addEventListener("resize", () => {
       this.introSize();
     });

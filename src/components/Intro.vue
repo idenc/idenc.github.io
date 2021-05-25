@@ -18,6 +18,7 @@ export default {
   name: "Intro",
   mounted: function () {
     const textReveal = {
+      reset: true,
       origin: "left",
       delay: 200,
       distance: "120px",
@@ -26,6 +27,7 @@ export default {
     ScrollReveal().reveal("#intro-text", textReveal);
 
     const imgReveal = {
+      reset: true,
       origin: "right",
       delay: 200,
       distance: "120px",
