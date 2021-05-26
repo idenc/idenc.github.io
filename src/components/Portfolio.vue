@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="heading">Projects</div>
+    <div id="projects-heading" class="heading">Projects</div>
     <div id="items">
       <PortfolioItem
         v-for="project in myProjects"
         :key="project.title"
         :project="project"
         class="item"
+        @imgClick="imgClick"
       />
     </div>
   </div>
@@ -22,6 +23,11 @@ export default {
     return {
       myProjects: projects,
     };
+  },
+  methods: {
+    imgClick: function (imgInfo) {
+      this.$emit("imgClick", imgInfo);
+    },
   },
 };
 </script>

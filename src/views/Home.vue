@@ -2,8 +2,15 @@
   <div class="home">
     <div id="background" />
     <div class="moving-clouds" />
+    <ModalImage
+      id="modal"
+      :caption="modalCaption"
+      :img-src="modalImgSrc"
+      :is-visible="modalVisible"
+      @modalVis="setModalVisible"
+    />
     <Intro id="intro" ref="intro" />
-    <Portfolio />
+    <Portfolio @imgClick="imgClick" />
   </div>
 </template>
 
@@ -12,12 +19,21 @@
 import Intro from "@/components/Intro";
 import Portfolio from "@/components/Portfolio";
 import $ from "jquery";
+import ModalImage from "@/components/ModalImage";
 
 export default {
   name: "Home",
   components: {
+    ModalImage,
     Portfolio,
     Intro,
+  },
+  data() {
+    return {
+      modalVisible: false,
+      modalImgSrc: String(),
+      modalCaption: String(),
+    };
   },
   mounted: function () {
     document.title = this.$titlePrefix + "Home";
@@ -27,16 +43,28 @@ export default {
     window.addEventListener("resize", () => {
       this.introSize();
     });
+    window.addEventListener("click", (e) => {
+      const $target = $(e.target);
+      if ($("#modal").is(":visible") && $target.closest("#modal").length) {
+        this.modalVisible = false;
+      }
+    });
   },
   methods: {
     introSize: function () {
       const intro = document.getElementById("intro");
       const delta = $(window).height() - intro.offsetHeight;
-      console.log(`Height: ${$(window).height()}`);
-      console.log(`bottom: ${intro.offsetHeight}`);
-      console.log(delta);
       intro.style.marginBottom = `${delta / 2}px`;
       intro.style.marginTop = `${delta / 2}px`;
+    },
+    imgClick: function (imgInfo) {
+      console.log(imgInfo);
+      this.modalImgSrc = imgInfo.imgSrc;
+      this.modalCaption = imgInfo.caption;
+      this.modalVisible = true;
+    },
+    setModalVisible: function (visibility) {
+      this.modalVisible = visibility;
     },
   },
 };

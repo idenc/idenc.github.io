@@ -27,8 +27,10 @@
 
     <img
       id="img"
+      ref="img"
       :src="require(`@/assets/img/${project.img}`)"
       alt="{{ project.title }} image"
+      @click="imgClick"
     />
   </div>
 </template>
@@ -38,6 +40,14 @@ export default {
   name: "PortfolioItem",
   props: {
     project: Object(),
+  },
+  methods: {
+    imgClick: function () {
+      this.$emit("imgClick", {
+        imgSrc: this.$refs.img.src,
+        caption: this.project.title,
+      });
+    },
   },
 };
 </script>
@@ -106,6 +116,7 @@ p {
   border-radius: 40px;
   min-height: 0;
   align-self: center;
+  max-width: 100%;
 }
 
 #root:hover {

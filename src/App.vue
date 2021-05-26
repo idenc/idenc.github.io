@@ -1,36 +1,16 @@
 <template>
   <div id="app">
     <NavBar id="nav" />
-    <router-view id="router-view" />
+    <Home id="home" />
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar";
+import Home from "@/views/Home";
 
 export default {
-  components: { NavBar },
-  // mounted: function () {
-  //   // When the user scrolls the page, execute myFunction
-  //   window.onscroll = function () {
-  //     myFunction();
-  //   };
-  //
-  //   // Get the navbar
-  //   const navbar = document.getElementById("nav");
-  //
-  //   // Get the offset position of the navbar
-  //   const sticky = navbar.offsetTop;
-  //
-  //   // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-  //   function myFunction() {
-  //     if (window.pageYOffset >= sticky) {
-  //       navbar.classList.add("sticky");
-  //     } else {
-  //       navbar.classList.remove("sticky");
-  //     }
-  //   }
-  // },
+  components: { NavBar, Home },
 };
 </script>
 
@@ -107,7 +87,7 @@ body {
   top: 0;
 }
 
-#router-view {
+#home {
   height: 100%;
   width: 100%;
 }

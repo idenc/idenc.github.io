@@ -80,7 +80,12 @@ p {
 #profile-pic {
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  border: 5px solid white;
+  border: 10px solid white;
   max-height: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+#profile-pic:hover {
+  transform: scale(1.25);
 }
 </style>
