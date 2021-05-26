@@ -1,5 +1,5 @@
 <template>
-  <div id="root">
+  <div class="root">
     <div id="header">
       <h1>{{ project.title }}</h1>
       <div>
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-#root {
+.root {
   margin: 2em 0 0;
   background: white;
   padding: 2em 2em 4em 2em;
@@ -67,11 +67,11 @@ export default {
   flex-flow: column nowrap;
 }
 
-#root * {
+.root * {
   box-sizing: border-box;
 }
 
-#root > * {
+.root > * {
   flex: 1;
 }
 
@@ -119,7 +119,7 @@ p {
   max-width: 100%;
 }
 
-#root:hover {
+.root:hover {
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 </style>

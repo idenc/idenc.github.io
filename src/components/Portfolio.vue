@@ -4,6 +4,7 @@
     <div id="items">
       <PortfolioItem
         v-for="project in myProjects"
+        :id="project.title"
         :key="project.title"
         :project="project"
         class="item"
@@ -15,6 +16,7 @@
 <script>
 import projects from "../assets/projects";
 import PortfolioItem from "@/components/PortfolioItem";
+import ScrollReveal from "scrollreveal";
 
 export default {
   name: "Portfolio",
@@ -23,6 +25,29 @@ export default {
     return {
       myProjects: projects,
     };
+  },
+  mounted: function () {
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    // Weird bug with scrollreveal where items will reveal on page load
+    // waiting for a bit and then adding the scrollreveal works around this
+    sleep(200).then(() => {
+      const items = document.getElementById("items");
+      let tick = false;
+      Array.from(items.children).map((child) => {
+        const textReveal = {
+          reset: false,
+          origin: tick ? "left" : "right",
+          delay: 200,
+          distance: "120px",
+          easing: "ease-in-out",
+        };
+        tick = !tick;
+        ScrollReveal().reveal(`#${child.id}`, textReveal);
+      });
+    });
   },
   methods: {
     imgClick: function (imgInfo) {
