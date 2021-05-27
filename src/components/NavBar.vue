@@ -39,6 +39,7 @@ export default {
       const evt = document.createEvent("MouseEvents");
       evt.initEvent("mouseup", true, true);
       burgerButton.dispatchEvent(evt);
+      burgerButton.click();
     },
     scrollToItem: function (selector) {
       const scrollItem = document.querySelector(selector);
@@ -86,6 +87,7 @@ export default {
 
 #nav-menu {
   display: none;
+  margin-right: 2vw;
 }
 
 @media screen and (max-width: 768px) {
