@@ -29,6 +29,7 @@ export default {
     Resume,
     ModalImage,
     Portfolio,
+    // eslint-disable-next-line vue/no-unused-components
     Intro,
   },
   data() {
@@ -77,7 +78,7 @@ export default {
 .home {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  overflow-x: hidden;
 }
 
 #background {

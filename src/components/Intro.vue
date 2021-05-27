@@ -1,12 +1,14 @@
 <template>
-  <div id="intro">
-    <div id="intro-text">
-      <p>Hi, I'm</p>
-      <p id="name">Iden.</p>
-      <div id="job-title">Software Developer</div>
-    </div>
-    <div id="pic-div">
-      <img id="profile-pic" alt="profile picture" src="@/assets/img/me.jpg" />
+  <div>
+    <div id="intro">
+      <div id="intro-text">
+        <p>Hi, I'm</p>
+        <p id="name">Iden.</p>
+        <div id="job-title">Software Developer</div>
+      </div>
+      <div id="pic-div">
+        <img id="profile-pic" alt="profile picture" src="@/assets/img/me.jpg" />
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +45,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #intro-text {
@@ -75,6 +78,7 @@ p {
 
 #pic-div {
   height: 50%;
+  max-width: 90%;
 }
 
 #profile-pic {
@@ -83,9 +87,32 @@ p {
   border: 10px solid white;
   max-height: 100%;
   transition: transform 0.4s ease-in-out;
+  max-width: 80%;
 }
 
 #profile-pic:hover {
   transform: scale(1.25);
+}
+
+@media screen and (max-width: 768px) {
+  #intro {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+  }
+  #job-title {
+    font-size: 5vw;
+  }
+
+  p {
+    font-size: 7vw;
+  }
+
+  #name {
+    font-size: 15vw;
+  }
+
+  #profile-pic {
+    border: 5px solid white;
+  }
 }
 </style>
