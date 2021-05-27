@@ -86,7 +86,7 @@ export default {
   position: fixed;
   left: 0;
   top: 0;
-  height: 100%;
+  height: 110%;
   width: 100%;
   background: url("~@/assets/img/forest.jpg");
   background-size: cover;

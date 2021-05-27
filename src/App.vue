@@ -19,6 +19,10 @@ body {
   margin: 0;
 }
 
+html.sr .load-hidden {
+  visibility: hidden;
+}
+
 @font-face {
   font-family: "Araboto-Black";
   src: local("Araboto-Black"),
