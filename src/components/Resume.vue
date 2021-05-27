@@ -18,6 +18,8 @@
         months of work experience as a computer vision intern at Au-Zone
         technologies.
       </p>
+
+      <h2><font-awesome-icon icon="briefcase" /> Work Experience</h2>
     </div>
   </div>
 </template>
