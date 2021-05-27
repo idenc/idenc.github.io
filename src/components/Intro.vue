@@ -6,7 +6,7 @@
       <div id="job-title">Software Developer</div>
     </div>
     <div id="pic-div">
-      <img id="profile-pic" alt="profile picture" src="../assets/img/me.jpg" />
+      <img id="profile-pic" alt="profile picture" src="@/assets/img/me.jpg" />
     </div>
   </div>
 </template>

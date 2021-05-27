@@ -1,11 +1,13 @@
 <template>
   <div>
     <div id="root">
-      <img id="logo" alt="logo" src="../assets/img/logo.png" />
+      <img id="logo" alt="logo" src="@/assets/img/logo.png" />
       <div id="links-div">
         <a @click="homeClick">Home </a>
         |
         <a @click="portfolioClick"> Portfolio </a>
+        |
+        <a @click="resumeClick"> Résumé </a>
       </div>
     </div>
   </div>
@@ -21,9 +23,15 @@ export default {
         behavior: "smooth",
       });
     },
+    scrollToItem: function (selector) {
+      const scrollItem = document.querySelector(selector);
+      scrollItem.scrollIntoView({ behavior: "smooth" });
+    },
     portfolioClick: function () {
-      const portfolioHeading = document.getElementById("projects-heading");
-      portfolioHeading.scrollIntoView({ behavior: "smooth" });
+      this.scrollToItem("#projects-heading");
+    },
+    resumeClick: function () {
+      this.scrollToItem("#resume-heading");
     },
   },
 };

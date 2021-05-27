@@ -11,6 +11,7 @@
     />
     <Intro id="intro" ref="intro" />
     <Portfolio @imgClick="imgClick" />
+    <Resume />
   </div>
 </template>
 
@@ -20,10 +21,12 @@ import Intro from "@/components/Intro";
 import Portfolio from "@/components/Portfolio";
 import $ from "jquery";
 import ModalImage from "@/components/ModalImage";
+import Resume from "@/components/Resume";
 
 export default {
   name: "Home",
   components: {
+    Resume,
     ModalImage,
     Portfolio,
     Intro,
@@ -84,13 +87,13 @@ export default {
   top: 0;
   height: 100%;
   width: 100%;
-  background: url("../assets/img/forest.jpg");
+  background: url("~@/assets/img/forest.jpg");
   background-size: cover;
 }
 
 .moving-clouds {
   z-index: -1;
-  background: url("../assets/img/clouds.png") repeat-x;
+  background: url("~@/assets/img/clouds.png") repeat-x;
   position: fixed;
   bottom: 0;
   left: 0;

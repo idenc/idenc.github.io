@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import projects from "../assets/projects";
+import projects from "@/assets/projects";
 import PortfolioItem from "@/components/PortfolioItem";
 import ScrollReveal from "scrollreveal";
 
