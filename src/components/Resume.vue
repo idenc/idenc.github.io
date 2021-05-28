@@ -3,7 +3,6 @@
     <div id="resume-heading" class="heading">Résumé</div>
     <div id="resume-root" class="card">
       <div id="info">
-        <h1>Iden Craven</h1>
         <div id="link-imgs">
           <a href="https://github.com/idenc" target="_blank">
             <img src="@/assets/img/github.png" alt="github link" />
@@ -12,6 +11,7 @@
             <img src="@/assets/img/linkedin.svg" alt="linkedin link" />
           </a>
         </div>
+        <h1>Iden Craven</h1>
         <h2>Programmer</h2>
         <div id="info-bar">
           <span><font-awesome-icon icon="map-marker-alt" /> Calgary, AB</span>
@@ -108,6 +108,7 @@ export default {
 
 #tech-imgs {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 0.83em;
 }
@@ -164,10 +165,13 @@ export default {
   float: right;
 }
 
+#link-imgs img:first-child {
+  margin-right: 20px;
+}
+
 #link-imgs img {
   height: 40px;
   cursor: pointer;
-  margin-left: 20px;
   filter: grayscale(100%);
   opacity: 0.6;
 }
@@ -175,5 +179,11 @@ export default {
 #link-imgs img:hover {
   filter: grayscale(0);
   opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  #link-imgs {
+    float: left;
+  }
 }
 </style>
