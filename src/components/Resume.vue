@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="resume-heading" class="heading">Résumé</div>
-    <div id="resume-root">
+    <div id="resume-root" class="card">
       <div id="info">
         <h1>Iden Craven</h1>
         <div id="link-imgs">
@@ -52,6 +52,7 @@
         <img
           id="ucalgary-img"
           src="@/assets/img/ucalgary.png"
+          alt="UCalgary"
           style="height: 1.2em"
         />
       </p>
@@ -133,15 +134,7 @@ export default {
 #resume-root {
   font-family: "Roboto";
   font-size: 1.2em;
-  background: white;
-  border-radius: 40px;
-  margin: auto;
-  padding: 2em 2em 4em 2em;
-  width: 70vw;
-  text-align: left;
-  max-width: 1000px;
-  transition: box-shadow 0.4s ease-in-out;
-  margin-bottom: 40px;
+  margin: auto auto 40px;
 }
 
 #resume-root:hover {

@@ -34,9 +34,9 @@ export default {
     // Weird bug with scrollreveal where items will reveal on page load
     // waiting for a bit and then adding the scrollreveal works around this
     sleep(200).then(() => {
-      const items = document.getElementById("items");
+      const items = document.getElementsByClassName("card");
       let tick = false;
-      Array.from(items.children).map((child) => {
+      Array.from(items).map((child) => {
         const textReveal = {
           reset: false,
           origin: tick ? "left" : "right",

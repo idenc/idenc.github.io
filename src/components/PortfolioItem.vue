@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="root card">
     <div id="header">
       <h1>{{ project.title }}</h1>
       <div>
@@ -55,14 +55,6 @@ export default {
 <style scoped>
 .root {
   margin: 2em 0 0;
-  background: white;
-  padding: 2em 2em 4em 2em;
-  border-radius: 40px;
-  width: 70vw;
-  text-align: left;
-  max-width: 1000px;
-  transition: box-shadow 0.4s ease-in-out;
-  max-height: 70vh;
   display: flex;
   flex-flow: column nowrap;
 }

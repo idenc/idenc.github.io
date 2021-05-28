@@ -1,7 +1,12 @@
 <template>
   <div>
     <div id="root">
-      <img id="logo" alt="logo" src="@/assets/img/logo.png" />
+      <img
+        id="logo"
+        alt="logo"
+        src="@/assets/img/logo.png"
+        @click="homeClick"
+      />
       <nav id="links-div">
         <a @click="homeClick">Home </a>
         |
@@ -69,6 +74,7 @@ export default {
 #logo {
   height: 100%;
   margin-left: 2vw;
+  cursor: pointer;
 }
 
 #links-div {

@@ -23,6 +23,16 @@ html.sr .load-hidden {
   visibility: hidden;
 }
 
+.card {
+  background: white;
+  padding: 2em 2em 4em 2em;
+  border-radius: 40px;
+  width: 70vw;
+  text-align: left;
+  max-width: 1000px;
+  transition: box-shadow 0.4s ease-in-out;
+}
+
 @font-face {
   font-family: "Araboto-Black";
   src: local("Araboto-Black"),
