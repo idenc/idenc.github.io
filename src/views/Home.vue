@@ -19,7 +19,6 @@
 // @ is an alias to /src
 import Intro from "@/components/Intro";
 import Portfolio from "@/components/Portfolio";
-import $ from "jquery";
 import ModalImage from "@/components/ModalImage";
 import Resume from "@/components/Resume";
 
@@ -29,7 +28,6 @@ export default {
     Resume,
     ModalImage,
     Portfolio,
-    // eslint-disable-next-line vue/no-unused-components
     Intro,
   },
   data() {
@@ -57,7 +55,7 @@ export default {
   methods: {
     introSize: function () {
       const intro = document.getElementById("intro");
-      const delta = $(window).height() - intro.offsetHeight;
+      const delta = window.innerHeight - intro.offsetHeight;
       intro.style.marginBottom = `${delta / 2}px`;
       intro.style.marginTop = `${delta / 2}px`;
     },
