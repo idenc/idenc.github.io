@@ -12,7 +12,6 @@ import {
   faCode,
   faGraduationCap,
 } from "@fortawesome/free-solid-svg-icons";
-import VueResizeText from "vue-resize-text/src/VueResizeText";
 
 library.add(
   faBriefcase,
@@ -28,5 +27,4 @@ const app = createApp(App);
 app.mixin(titleMixin);
 app.config.globalProperties.$titlePrefix = "Iden's Website | ";
 app.component("FontAwesomeIcon", FontAwesomeIcon);
-app.directive("resize-text", VueResizeText);
 app.mount("#app");

@@ -25,12 +25,10 @@
 </template>
 
 <script>
-import { Slide } from "vue3-burger-menu";
 import NavMenu from "@/components/NavMenu";
 export default {
   name: "NavBar",
-  // eslint-disable-next-line vue/no-unused-components
-  components: { NavMenu, Slide },
+  components: { NavMenu },
   methods: {
     homeClick: function () {
       window.scroll({
