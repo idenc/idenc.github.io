@@ -48,8 +48,8 @@ export default {
       this.introSize();
     });
     window.addEventListener("click", (e) => {
-      const $target = $(e.target);
-      if ($("#modal").is(":visible") && $target.closest("#modal").length) {
+      const modal = document.querySelector(".modal-content");
+      if (modal.style.visibility !== "none" && !modal.contains(e.target)) {
         this.modalVisible = false;
       }
     });
@@ -62,7 +62,6 @@ export default {
       intro.style.marginTop = `${delta / 2}px`;
     },
     imgClick: function (imgInfo) {
-      console.log(imgInfo);
       this.modalImgSrc = imgInfo.imgSrc;
       this.modalCaption = imgInfo.caption;
       this.modalVisible = true;

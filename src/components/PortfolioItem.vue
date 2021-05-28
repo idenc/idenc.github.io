@@ -30,7 +30,7 @@
       ref="img"
       :src="require(`@/assets/img/${project.img}`)"
       alt="{{ project.title }} image"
-      @click="imgClick"
+      @click.stop="imgClick"
     />
   </div>
 </template>
