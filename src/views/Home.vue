@@ -39,9 +39,14 @@ export default {
   },
   mounted: function () {
     document.title = this.$titlePrefix + "Home";
+    // Add listener for closing modal image when clicking outside of it
     window.addEventListener("click", (e) => {
       const modal = document.querySelector(".modal-content");
-      if (modal.style.visibility !== "none" && !modal.contains(e.target)) {
+      if (
+        modal &&
+        modal.style.visibility !== "none" &&
+        !modal.contains(e.target)
+      ) {
         this.modalVisible = false;
       }
     });

@@ -109,6 +109,7 @@ p {
   min-height: 0;
   align-self: center;
   max-width: 100%;
+  cursor: pointer;
 }
 
 .root:hover {

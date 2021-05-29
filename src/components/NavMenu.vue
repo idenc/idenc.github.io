@@ -38,11 +38,9 @@ export default {
   methods: {
     menuClick: function () {
       if (!this.menuOpen) {
-        console.log("opening menu");
         document.getElementById("burger-menu").style.width = "100%";
         this.menuOpen = true;
       } else {
-        console.log("closing menu");
         document.getElementById("burger-menu").style.width = "0";
         this.menuOpen = false;
       }

@@ -15,7 +15,7 @@
         v-if="imgSrc"
         class="modal-content"
         :src="imgSrc"
-        alt="{{caption}} img"
+        :alt="`${caption} img`"
       />
 
       <!-- Modal Caption (Image Text) -->

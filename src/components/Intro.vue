@@ -97,7 +97,7 @@ p {
 @media screen and (max-width: 768px) {
   #intro {
     flex-direction: column-reverse;
-    justify-content: flex-start;
+    justify-content: center;
   }
   #job-title {
     font-size: 5vw;
