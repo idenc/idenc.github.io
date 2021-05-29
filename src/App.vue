@@ -97,7 +97,7 @@ html.sr .load-hidden {
   background-color: white;
   height: 3em;
   width: 100%;
-  opacity: 75%;
+  opacity: 0.75;
   font-size: 3em;
 }
 </style>
