@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div v-cloak id="app">
     <NavBar id="nav" />
     <Home id="home" />
   </div>
@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style>
+[v-cloak] {
+  display: none;
+}
+
 body {
   margin: 0;
 }
@@ -50,22 +54,6 @@ html.sr .load-hidden {
 }
 
 @font-face {
-  font-family: "Araboto-Light";
-  src: local("Araboto-Light"),
-    url("./assets/fonts/Araboto-Light.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Araboto-Medium";
-  src: local("Araboto-Medium"),
-    url("./assets/fonts/Araboto-Medium.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Araboto-Normal";
   src: local("Araboto-Normal"),
     url("./assets/fonts/Araboto-Normal.ttf") format("truetype");
@@ -73,16 +61,8 @@ html.sr .load-hidden {
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Araboto-Thin";
-  src: local("Araboto-Thin"),
-    url("./assets/fonts/Araboto-Thin.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 #app {
-  font-family: Araboto-Black, Helvetica, Arial, sans-serif;
+  font-family: Araboto-Black, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
