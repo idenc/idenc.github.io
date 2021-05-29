@@ -39,12 +39,6 @@ export default {
   },
   mounted: function () {
     document.title = this.$titlePrefix + "Home";
-    window.addEventListener("load", () => {
-      this.introSize();
-    });
-    window.addEventListener("resize", () => {
-      this.introSize();
-    });
     window.addEventListener("click", (e) => {
       const modal = document.querySelector(".modal-content");
       if (modal.style.visibility !== "none" && !modal.contains(e.target)) {
@@ -113,5 +107,6 @@ export default {
 #intro {
   width: 100%;
   margin: 0;
+  height: 100vh;
 }
 </style>
