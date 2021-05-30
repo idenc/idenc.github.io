@@ -43,7 +43,8 @@ export default {
 <style scoped>
 #intro {
   display: flex;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -64,6 +65,11 @@ export default {
   padding: 15px;
   font-size: 3vw;
   color: #2c3e50;
+  transition: 0.4s;
+}
+
+#job-title:hover {
+  background: #b2cdd6;
 }
 
 p {
@@ -78,7 +84,6 @@ p {
 
 #pic-div {
   height: 50%;
-  max-width: 90%;
 }
 
 #profile-pic {

@@ -22,7 +22,7 @@ label {
 }
 
 label span {
-  background: #fff;
+  background: #556773;
   border-radius: 10px;
   height: 7px;
   margin: 7px 0;
