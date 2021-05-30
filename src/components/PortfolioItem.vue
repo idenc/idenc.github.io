@@ -95,12 +95,10 @@ export default {
 }
 
 h1 {
-  font-size: clamp(20px, 4vw, 4vw);
   color: #1c1c1c;
 }
 
 p {
-  font-size: clamp(16px, 1.2vw, 1.2vw);
   line-height: 1.6;
 }
 
