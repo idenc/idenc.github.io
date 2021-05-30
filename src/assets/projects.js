@@ -31,7 +31,7 @@ const projects = [
   },
   {
     title: "Snapceit",
-    img: "snapceit.gif",
+    img: "snapceit.png",
     description:
       "An Android app which utilizes Google's MLKit to perform character" +
       " recognition on receipts to allow quick and easy bill-splitting between" +
