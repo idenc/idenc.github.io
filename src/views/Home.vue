@@ -12,6 +12,7 @@
     <Intro id="intro" ref="intro" />
     <Portfolio @imgClick="imgClick" />
     <Resume />
+    <Footer />
   </div>
 </template>
 
@@ -21,10 +22,12 @@ import Intro from "@/components/Intro";
 import Portfolio from "@/components/Portfolio";
 import ModalImage from "@/components/ModalImage";
 import Resume from "@/components/Resume";
+import Footer from "@/components/Footer";
 
 export default {
   name: "Home",
   components: {
+    Footer,
     Resume,
     ModalImage,
     Portfolio,

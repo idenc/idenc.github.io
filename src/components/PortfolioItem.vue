@@ -57,6 +57,7 @@ export default {
   margin: 2em 0 0;
   display: flex;
   flex-flow: column nowrap;
+  max-height: 90vh;
 }
 
 .root * {
@@ -95,10 +96,12 @@ export default {
 }
 
 h1 {
+  font-size: clamp(20px, 4vw, 4vw);
   color: #1c1c1c;
 }
 
 p {
+  font-size: clamp(16px, 1.2vw, 1.2vw);
   line-height: 1.6;
 }
 
