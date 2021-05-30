@@ -1,13 +1,18 @@
 <template>
   <div>
-    <div id="intro">
+    <div id="intro" ref="intro">
       <div id="intro-text">
         <p>Hi, I'm</p>
         <p id="name">Iden.</p>
         <div id="job-title">Software Developer</div>
       </div>
       <div id="pic-div">
-        <img id="profile-pic" alt="profile picture" src="@/assets/img/me.jpg" />
+        <img
+          id="profile-pic"
+          ref="profilePic"
+          alt="profile picture"
+          src="@/assets/img/me.jpg"
+        />
       </div>
     </div>
   </div>
@@ -19,23 +24,26 @@ import ScrollReveal from "scrollreveal";
 export default {
   name: "Intro",
   mounted: function () {
-    const textReveal = {
-      reset: true,
-      origin: "left",
-      delay: 200,
-      distance: "120px",
-      easing: "ease-in-out",
-    };
-    ScrollReveal().reveal("#intro-text", textReveal);
+    this.$refs.profilePic.onload = () => {
+      this.$refs.intro.style.visibility = "visible";
+      const textReveal = {
+        reset: true,
+        origin: "left",
+        delay: 200,
+        distance: "120px",
+        easing: "ease-in-out",
+      };
+      ScrollReveal().reveal("#intro-text", textReveal);
 
-    const imgReveal = {
-      reset: true,
-      origin: "right",
-      delay: 200,
-      distance: "120px",
-      easing: "ease-in-out",
+      const imgReveal = {
+        reset: true,
+        origin: "right",
+        delay: 200,
+        distance: "120px",
+        easing: "ease-in-out",
+      };
+      ScrollReveal().reveal("#pic-div", imgReveal);
     };
-    ScrollReveal().reveal("#pic-div", imgReveal);
   },
 };
 </script>
@@ -47,6 +55,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+  visibility: hidden;
 }
 
 #intro-text {
