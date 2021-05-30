@@ -71,7 +71,7 @@ export default {
 }
 
 #footer-content img {
-  width: clamp(42px, 8vw, 120px);
+  width: clamp(42px, 20vw, 120px);
 }
 
 #footer-content h1 {
