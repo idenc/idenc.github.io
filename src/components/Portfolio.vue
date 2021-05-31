@@ -62,5 +62,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  perspective: 1000px;
 }
 </style>
