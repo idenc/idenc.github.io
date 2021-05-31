@@ -104,7 +104,6 @@ export default {
 
       //Animate Out
       container.on("mouseleave", () => {
-        console.log("leave");
         card.attr(
           "style",
           "transition: all 0.5s ease;" +

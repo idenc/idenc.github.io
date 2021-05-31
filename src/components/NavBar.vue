@@ -16,7 +16,7 @@
       </nav>
       <NavMenu
         id="nav-menu"
-        :home-click="homeClick"
+        :home-click="mobileHomeClick"
         :portfolio-click="portfolioClick"
         :resume-click="resumeClick"
       />
@@ -30,12 +30,15 @@ export default {
   name: "NavBar",
   components: { NavMenu },
   methods: {
+    mobileHomeClick: function () {
+      this.homeClick();
+      this.closeNavMenu();
+    },
     homeClick: function () {
       window.scroll({
         top: 0,
         behavior: "smooth",
       });
-      this.closeNavMenu();
     },
     closeNavMenu: function () {
       const burgerButton = document.getElementById("burger-button");
