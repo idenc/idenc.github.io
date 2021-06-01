@@ -7,12 +7,7 @@
         <div id="job-title">Software Developer</div>
       </div>
       <div id="pic-div">
-        <img
-          id="profile-pic"
-          ref="profilePic"
-          alt="profile picture"
-          src="@/assets/img/me.jpg"
-        />
+        <ProfilePic id="profile-pic" ref="profilePic" />
       </div>
     </div>
   </div>
@@ -20,30 +15,30 @@
 
 <script>
 import ScrollReveal from "scrollreveal";
+import ProfilePic from "@/components/ProfilePic";
 
 export default {
   name: "Intro",
+  components: { ProfilePic },
   mounted: function () {
-    this.$refs.profilePic.onload = () => {
-      this.$refs.intro.style.visibility = "visible";
-      const textReveal = {
-        reset: true,
-        origin: "left",
-        delay: 200,
-        distance: "120px",
-        easing: "ease-in-out",
-      };
-      ScrollReveal().reveal("#intro-text", textReveal);
-
-      const imgReveal = {
-        reset: true,
-        origin: "right",
-        delay: 200,
-        distance: "120px",
-        easing: "ease-in-out",
-      };
-      ScrollReveal().reveal("#pic-div", imgReveal);
+    this.$refs.intro.style.visibility = "visible";
+    const textReveal = {
+      reset: true,
+      origin: "left",
+      delay: 200,
+      distance: "120px",
+      easing: "ease-in-out",
     };
+    ScrollReveal().reveal("#intro-text", textReveal);
+
+    const imgReveal = {
+      reset: true,
+      origin: "right",
+      delay: 200,
+      distance: "120px",
+      easing: "ease-in-out",
+    };
+    ScrollReveal().reveal("#pic-div", imgReveal);
   },
 };
 </script>
@@ -95,18 +90,18 @@ p {
   height: 50%;
 }
 
-#profile-pic {
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  border: 10px solid white;
-  max-height: 100%;
-  transition: transform 0.4s ease-in-out;
-  max-width: 80%;
-}
+/*#profile-pic {*/
+/*  border-radius: 50%;*/
+/*  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;*/
+/*  border: 10px solid white;*/
+/*  max-height: 100%;*/
+/*  transition: transform 0.4s ease-in-out;*/
+/*  max-width: 80%;*/
+/*}*/
 
-#profile-pic:hover {
-  transform: scale(1.25);
-}
+/*#profile-pic:hover {*/
+/*  transform: scale(1.25);*/
+/*}*/
 
 @media screen and (max-width: 768px) {
   #intro {

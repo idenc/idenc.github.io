@@ -15,6 +15,13 @@ export default {
 </script>
 
 <style>
+canvas {
+  display: block;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
 [v-cloak] {
   display: none;
 }
