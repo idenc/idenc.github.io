@@ -51,6 +51,7 @@ export default {
       init: false,
       betaOffset: Number(),
       gammaOffset: Number(),
+      alphaOffset: Number(),
     };
   },
   mounted: function () {
@@ -62,23 +63,51 @@ export default {
         navigator.userAgent
       )
     ) {
-      window.ondeviceorientation = function (event) {
-        if (!this.init) {
-          this.betaOffset = event.beta;
-          this.gammaOffset = event.gamma;
-          this.init = true;
-        }
-
-        const beta = (event.beta - this.betaOffset) * -1;
-        const gamma = (event.gamma - this.gammaOffset) * 0.5;
-
-        card.attr(
-          "style",
-          `transform: rotateY(${gamma}deg) rotateX(${beta}deg)`
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener(
+          "deviceorientation",
+          (e) => {
+            this.tilt(card, e.beta, e.gamma, e.alpha);
+          },
+          true
         );
-      };
+      }
     } else {
-      container.on("mousemove", (t) => {
+      container.on("mousemove", this.handleMouseMove(container, card));
+
+      //Animate Out
+      container.on("mouseleave", this.handleMouseLeave(card));
+    }
+  },
+  methods: {
+    tilt: function (card, beta, gamma, alpha) {
+      if (!this.init) {
+        console.log(`beta offset: ${beta}`);
+        console.log(`gamma offset: ${gamma}`);
+        console.log(`alpha offset: ${alpha}`);
+        this.betaOffset = beta;
+        this.gammaOffset = gamma;
+        this.alphaOffset = alpha;
+        this.init = true;
+      }
+
+      const rotX = -(beta - this.betaOffset);
+      const rotY = gamma - this.gammaOffset;
+      const rotZ = -(alpha - this.alphaOffset);
+
+      card.attr(
+        "style",
+        `transform: rotateZ(${rotZ}deg) rotateX(${rotX}deg) rotateY(${rotY}deg)`
+      );
+    },
+    imgClick: function () {
+      this.$emit("imgClick", {
+        imgSrc: this.$refs.img.src,
+        caption: this.project.title,
+      });
+    },
+    handleMouseMove: function (container, card) {
+      return (t) => {
         const x = t.pageX - container.offset().left;
         const y = t.pageY - container.offset().top;
         const e = -(container.innerWidth() / 2 - x) / 80;
@@ -100,10 +129,10 @@ export default {
             n +
             "deg)"
         );
-      });
-
-      //Animate Out
-      container.on("mouseleave", () => {
+      };
+    },
+    handleMouseLeave: function (card) {
+      return () => {
         card.attr(
           "style",
           "transition: all 0.5s ease;" +
@@ -111,15 +140,7 @@ export default {
             "-webkit-transform: rotateY(0) rotateX(0);" +
             "-moz-transform: rotateY(0) rotateX(0)"
         );
-      });
-    }
-  },
-  methods: {
-    imgClick: function () {
-      this.$emit("imgClick", {
-        imgSrc: this.$refs.img.src,
-        caption: this.project.title,
-      });
+      };
     },
   },
 };
