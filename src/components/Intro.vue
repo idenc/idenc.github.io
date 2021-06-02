@@ -86,10 +86,6 @@ p {
   font-family: Araboto-Black, Helvetica, sans-serif;
 }
 
-#pic-div {
-  height: 50%;
-}
-
 /*#profile-pic {*/
 /*  border-radius: 50%;*/
 /*  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;*/
@@ -118,10 +114,6 @@ p {
 
   #name {
     font-size: 15vw;
-  }
-
-  #profile-pic {
-    border: 5px solid white;
   }
 }
 </style>

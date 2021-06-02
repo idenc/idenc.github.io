@@ -16,11 +16,11 @@ export default {
 
 <style>
 canvas {
-  display: block;
-  position: fixed;
-  z-index: -1;
-  left: 0;
-  top: 0;
+  /*display: block;*/
+  /*position: fixed;*/
+  /*z-index: -1;*/
+  /*left: 0;*/
+  /*top: 0;*/
 }
 [v-cloak] {
   display: none;
@@ -32,6 +32,18 @@ body {
 
 html.sr .load-hidden {
   visibility: hidden;
+}
+
+#gui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.dg.ac {
+  z-index: 2;
 }
 
 .card {
