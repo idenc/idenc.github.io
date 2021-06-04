@@ -14,6 +14,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/vue-fontawesome": "^3.0.0-4",
+    "@tweenjs/tween.js": "^18.6.4",
     "core-js": "^3.13.0",
     "dat.gui": "^0.7.7",
     "jquery": "^3.6.0",
@@ -49,6 +50,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
+      "no-unused-vars": "warn",
       "prettier/prettier": [
         "error",
         {
