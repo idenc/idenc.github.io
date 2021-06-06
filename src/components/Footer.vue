@@ -52,4 +52,15 @@ export default {
   width: 2px;
   background-color: #fff;
 }
+
+@media (max-width: 768px) {
+  #footer-content {
+    padding-top: 6em;
+    margin-top: 6rem;
+  }
+
+  #footer-root {
+    overflow: hidden;
+  }
+}
 </style>
