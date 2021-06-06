@@ -1,49 +1,44 @@
 <template>
-  <div>
-    <div id="intro" ref="intro">
+  <div id="intro" ref="intro">
+    <div id="text-wrapper">
       <div id="intro-text">
         <p>Hi, I'm</p>
         <p id="name">Iden.</p>
         <div id="job-title">Software Developer</div>
       </div>
-      <div id="pic-div">
-        <img
-          id="profile-pic"
-          ref="profilePic"
-          alt="profile picture"
-          src="@/assets/img/me.jpg"
-        />
-      </div>
+    </div>
+    <div id="pic-div">
+      <ProfilePic id="profile-pic" ref="profilePic" />
     </div>
   </div>
 </template>
 
 <script>
 import ScrollReveal from "scrollreveal";
+import ProfilePic from "@/components/ProfilePic";
 
 export default {
   name: "Intro",
+  components: { ProfilePic },
   mounted: function () {
-    this.$refs.profilePic.onload = () => {
-      this.$refs.intro.style.visibility = "visible";
-      const textReveal = {
-        reset: true,
-        origin: "left",
-        delay: 200,
-        distance: "120px",
-        easing: "ease-in-out",
-      };
-      ScrollReveal().reveal("#intro-text", textReveal);
-
-      const imgReveal = {
-        reset: true,
-        origin: "right",
-        delay: 200,
-        distance: "120px",
-        easing: "ease-in-out",
-      };
-      ScrollReveal().reveal("#pic-div", imgReveal);
+    this.$refs.intro.style.visibility = "visible";
+    const textReveal = {
+      reset: true,
+      origin: "left",
+      delay: 200,
+      distance: "120px",
+      easing: "ease-in-out",
     };
+    ScrollReveal().reveal("#intro-text", textReveal);
+
+    const imgReveal = {
+      reset: true,
+      origin: "right",
+      delay: 200,
+      distance: "120px",
+      easing: "ease-in-out",
+    };
+    ScrollReveal().reveal("#pic-div", imgReveal);
   },
 };
 </script>
@@ -52,10 +47,15 @@ export default {
 #intro {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
   visibility: hidden;
+}
+
+#text-wrapper {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #intro-text {
@@ -91,30 +91,24 @@ p {
   font-family: Araboto-Black, Helvetica, sans-serif;
 }
 
+#profile-pic,
 #pic-div {
-  height: 50%;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
-#profile-pic {
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-  border: 10px solid white;
-  max-height: 100%;
-  transition: transform 0.4s ease-in-out;
-  max-width: 80%;
-}
-
-#profile-pic:hover {
-  transform: scale(1.25);
+@media screen and (max-width: 768px) and (min-height: 400px) {
+  #intro {
+    flex-direction: column-reverse;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  #intro {
-    flex-direction: column-reverse;
-    justify-content: center;
-  }
   #job-title {
     font-size: 5vw;
+  }
+
+  #pic-div {
+    flex: 0;
   }
 
   p {
@@ -123,10 +117,6 @@ p {
 
   #name {
     font-size: 15vw;
-  }
-
-  #profile-pic {
-    border: 5px solid white;
   }
 }
 </style>
