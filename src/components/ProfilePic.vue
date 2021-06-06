@@ -245,18 +245,20 @@ export default {
   },
   methods: {
     getSceneWidth: function () {
-      const mq = window.matchMedia("(max-width: 768px)");
-      if (mq.matches) {
-        // Window width is less than 768px
+      const mw = window.matchMedia("(max-width: 768px)");
+      const mh = window.matchMedia("(min-height: 400px)");
+      if (mw.matches && mh.matches) {
+        // Window width is less than 768px and height is greater than 400px
         return $("#intro").width();
       } else {
         return $("#intro").width() / 2;
       }
     },
     getSceneHeight: function () {
-      const mq = window.matchMedia("(max-width: 768px)");
-      if (mq.matches) {
-        // Window width is less than 768px
+      const mw = window.matchMedia("(max-width: 768px)");
+      const mh = window.matchMedia("(min-height: 400px)");
+      if (mw.matches && mh.matches) {
+        // Window width is less than 768px and height is greater than 400px
         return $("#intro").height() / 2;
       } else {
         return $("#intro").height();

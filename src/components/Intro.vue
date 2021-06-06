@@ -96,10 +96,13 @@ p {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (min-height: 400px) {
   #intro {
     flex-direction: column-reverse;
   }
+}
+
+@media screen and (max-width: 768px) {
   #job-title {
     font-size: 5vw;
   }
