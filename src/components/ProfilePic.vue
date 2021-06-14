@@ -108,32 +108,20 @@ export default {
       width: this.getSceneWidth(),
       height: this.getSceneHeight(),
     };
-    console.log(sizes);
-    const meshAspectRatio = 1;
 
     const updateSizes = () => {
       // Update sizes
       sizes.width = this.getSceneWidth();
       sizes.height = this.getSceneHeight();
-      console.log(sizes);
       const canvas = renderer.domElement;
-      console.log(canvas);
       if (canvas.width !== sizes.width || canvas.height !== sizes.height) {
         // Update camera
         camera.aspect = sizes.width / sizes.height;
-        // if (camera.aspect > meshAspectRatio) {
-        //   const cameraHeight = Math.tan(MathUtils.degToRad(camera.fov / 2));
-        //   const ratio = camera.aspect / meshAspectRatio;
-        //   const newCameraHeight = cameraHeight / ratio;
-        //   camera.fov = MathUtils.radToDeg(Math.atan(newCameraHeight)) * 2;
-        //   console.log(`New fov: ${camera.fov}`);
-        // }
         camera.updateProjectionMatrix();
 
         // Update renderer
         renderer.setSize(sizes.width, sizes.height);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        // this.fitCameraToObject(camera, combinedMesh, 2.5);
       }
     };
 
@@ -210,13 +198,11 @@ export default {
     });
     sceneCanvas.addEventListener("click", () => {
       animPlaying = true;
-      console.log("click");
       new TWEEN.Tween(combinedMesh.rotation)
         .to({ y: `+${4 * Math.PI}` }, 1500)
         .easing(TWEEN.Easing.Back.InOut)
         .onComplete(() => {
           animPlaying = false;
-          console.log("complete");
         })
         .start();
       new TWEEN.Tween(combinedMesh.position)

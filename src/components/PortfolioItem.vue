@@ -41,6 +41,7 @@
 
 <script>
 import $ from "jquery";
+
 export default {
   name: "PortfolioItem",
   props: {
@@ -80,25 +81,16 @@ export default {
     }
   },
   methods: {
-    tilt: function (card, beta, gamma, alpha) {
+    tilt: function (card, beta, gamma) {
       if (!this.init) {
-        console.log(`beta offset: ${beta}`);
-        console.log(`gamma offset: ${gamma}`);
-        console.log(`alpha offset: ${alpha}`);
         this.betaOffset = beta;
         this.gammaOffset = gamma;
-        this.alphaOffset = alpha;
         this.init = true;
       }
-
-      const rotX = -(beta - this.betaOffset);
-      const rotY = gamma - this.gammaOffset;
-      const rotZ = -(alpha - this.alphaOffset);
-
-      card.attr(
-        "style",
-        `transform: rotateZ(${rotZ}deg) rotateX(${rotX}deg) rotateY(${rotY}deg)`
-      );
+      const rotY = Math.min(Math.max(gamma - this.gammaOffset, -30), 30);
+      const rotX = -Math.min(Math.max(beta - this.betaOffset, -30), 30);
+      console.log(`rotX ${rotX}`);
+      card.attr("style", `transform: rotateY(${rotY}deg) rotateX(${rotX}deg)`);
     },
     imgClick: function () {
       this.$emit("imgClick", {

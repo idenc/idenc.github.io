@@ -31,7 +31,7 @@ export default {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    // Weird bug with scrollreveal where items will reveal on page load
+    // Weird bug with scrollreveal where items will reveal on page load even if not in view
     // waiting for a bit and then adding the scrollreveal works around this
     sleep(200).then(() => {
       const items = document.getElementsByClassName("card");
