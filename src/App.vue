@@ -1,5 +1,6 @@
 <template>
   <div v-cloak id="app">
+    <Loader />
     <NavBar id="nav" />
     <Home id="home" />
   </div>
@@ -8,20 +9,14 @@
 <script>
 import NavBar from "@/components/NavBar";
 import Home from "@/views/Home";
+import Loader from "@/components/Loader";
 
 export default {
-  components: { NavBar, Home },
+  components: { Loader, NavBar, Home },
 };
 </script>
 
 <style>
-canvas {
-  /*display: block;*/
-  /*position: fixed;*/
-  /*z-index: -1;*/
-  /*left: 0;*/
-  /*top: 0;*/
-}
 [v-cloak] {
   display: none;
 }
@@ -32,6 +27,10 @@ body {
 
 html.sr .load-hidden {
   visibility: hidden;
+}
+
+#nav {
+  display: none;
 }
 
 #gui {

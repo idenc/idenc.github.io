@@ -8,7 +8,11 @@
       </div>
     </div>
     <div id="pic-div">
-      <ProfilePic id="profile-pic" ref="profilePic" />
+      <ProfilePic
+        id="profile-pic"
+        ref="profilePic"
+        @profilePicLoaded="revealIntro"
+      />
     </div>
   </div>
 </template>
@@ -20,25 +24,26 @@ import ProfilePic from "@/components/ProfilePic";
 export default {
   name: "Intro",
   components: { ProfilePic },
-  mounted: function () {
-    this.$refs.intro.style.visibility = "visible";
-    const textReveal = {
-      reset: true,
-      origin: "left",
-      delay: 200,
-      distance: "120px",
-      easing: "ease-in-out",
-    };
-    ScrollReveal().reveal("#intro-text", textReveal);
+  methods: {
+    revealIntro: function () {
+      const textReveal = {
+        reset: true,
+        origin: "left",
+        delay: 200,
+        distance: "120px",
+        easing: "ease-in-out",
+      };
+      ScrollReveal().reveal("#intro-text", textReveal);
 
-    const imgReveal = {
-      reset: true,
-      origin: "right",
-      delay: 200,
-      distance: "120px",
-      easing: "ease-in-out",
-    };
-    ScrollReveal().reveal("#pic-div", imgReveal);
+      const imgReveal = {
+        reset: true,
+        origin: "right",
+        delay: 200,
+        distance: "120px",
+        easing: "ease-in-out",
+      };
+      ScrollReveal().reveal("#pic-div", imgReveal);
+    },
   },
 };
 </script>

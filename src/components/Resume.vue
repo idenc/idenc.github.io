@@ -86,7 +86,7 @@
 
 <script>
 import WorkExperience from "@/components/WorkExperience";
-import experience from "@/assets/experience";
+import experience from "@/assets/js/experience";
 export default {
   name: "Resume",
   components: { WorkExperience },

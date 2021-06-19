@@ -8,8 +8,10 @@ import * as dat from "dat.gui";
 import * as TWEEN from "@tweenjs/tween.js";
 import * as MathUtils from "three/src/math/MathUtils";
 import $ from "jquery";
+import ScrollReveal from "scrollreveal";
 export default {
   name: "ProfilePic",
+  props: {},
   data() {
     return {
       canvasSelector: "canvas.webgl",
@@ -25,7 +27,10 @@ export default {
   mounted: function () {
     // Loading
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load(require("@/assets/img/me.jpg"));
+    const texture = textureLoader.load(
+      require("@/assets/img/me.jpg"),
+      this.profilePicLoaded
+    );
     // Debug
     const gui = new dat.GUI();
     gui.domElement.id = "gui";
@@ -230,6 +235,28 @@ export default {
     requestAnimationFrame(tick);
   },
   methods: {
+    profilePicLoaded: function () {
+      $(".loader-wrapper").fadeOut("slow");
+      $("#nav").fadeIn("slow");
+      this.$emit("profilePicLoaded");
+
+      this.revealCards();
+    },
+    revealCards: function () {
+      const items = document.getElementsByClassName("card");
+      let tick = false;
+      Array.from(items).map((child) => {
+        const textReveal = {
+          reset: false,
+          origin: tick ? "left" : "right",
+          delay: 200,
+          distance: "120px",
+          easing: "ease-in-out",
+        };
+        tick = !tick;
+        ScrollReveal().reveal(`#${child.id}`, textReveal);
+      });
+    },
     getSceneWidth: function () {
       const mw = window.matchMedia("(max-width: 768px)");
       const mh = window.matchMedia("(min-height: 400px)");
