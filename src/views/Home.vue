@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <div id="background" />
+    <!--    <div id="background" />-->
+    <Background />
     <div class="moving-clouds" />
     <ModalImage
       id="modal"
@@ -23,10 +24,12 @@ import Portfolio from "@/components/Portfolio";
 import ModalImage from "@/components/ModalImage";
 import Resume from "@/components/Resume";
 import Footer from "@/components/Footer";
+import Background from "@/components/Background";
 
 export default {
   name: "Home",
   components: {
+    Background,
     Footer,
     Resume,
     ModalImage,

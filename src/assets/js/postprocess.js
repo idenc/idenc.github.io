@@ -1,18 +1,19 @@
 import * as THREE from "three";
-import fragment from "@assets/shader/fragment.glsl";
-import vertex from "@assets/shader/vertex.glsl";
+import fragment from "raw-loader!glslify-loader!../shader/fragment.glsl";
+import vertex from "raw-loader!glslify-loader!../shader/vertex.glsl";
 
-import postvertex from "@assets/post/vertex.glsl";
-import postfragment from "@assets/post/fragment.glsl";
+import postvertex from "raw-loader!glslify-loader!../post/vertex.glsl";
+import postfragment from "raw-loader!glslify-loader!../post/fragment.glsl";
 import * as dat from "dat.gui";
 
 const createInputEvents = require("simple-input-events");
 const event = createInputEvents(window);
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import * as MathUtils from "three/src/math/MathUtils";
+import * as TWEEN from "@tweenjs/tween.js";
 
 const clamp = (min, max) => (value) =>
   value < min ? min : value > max ? max : value;
@@ -21,21 +22,20 @@ export default class Sketch {
   constructor(selector) {
     this.scene = new THREE.Scene();
 
+    this.container = document.getElementById(selector);
+
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
+      canvas: this.container,
     });
     this.width = window.innerWidth;
     this.height = window.innerHeight;
-    // this.renderer.setPixelRatio(window.devicePixelRatio);
-    this.renderer.setPixelRatio(1);
+    this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.renderer.sortObjects = false;
 
     this.renderer.outputEncoding = THREE.sRGBEncoding;
-
-    this.container = document.getElementById("container");
-    this.container.appendChild(this.renderer.domElement);
 
     this.camera = new THREE.PerspectiveCamera(
       70,
@@ -55,7 +55,6 @@ export default class Sketch {
     this.prevMouse = new THREE.Vector2();
 
     this.paused = false;
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
     this.settings();
     this.setupResize();
@@ -65,6 +64,12 @@ export default class Sketch {
     this.addObjects();
     this.resize();
     this.render();
+
+    const tick = () => {
+      this.render();
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   mouseMove() {
@@ -149,7 +154,8 @@ export default class Sketch {
 
   createMesh(o) {
     let material = this.material.clone();
-    let texture = new THREE.Texture(o.image);
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load(o.src);
     texture.needsUpdate = true;
     // image cover
     let imageAspect = o.iHeight / o.iWidth;
