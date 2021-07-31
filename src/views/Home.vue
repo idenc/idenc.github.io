@@ -12,6 +12,7 @@
     <Intro id="intro" ref="intro" />
     <Portfolio @imgClick="imgClick" />
     <Resume />
+    <SwingGame />
     <Footer />
   </div>
 </template>
@@ -23,10 +24,12 @@ import Portfolio from "@/components/Portfolio";
 import ModalImage from "@/components/ModalImage";
 import Resume from "@/components/Resume";
 import Footer from "@/components/Footer";
+import SwingGame from "@/components/SwingGame";
 
 export default {
   name: "Home",
   components: {
+    SwingGame,
     Footer,
     Resume,
     ModalImage,
