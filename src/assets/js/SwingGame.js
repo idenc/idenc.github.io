@@ -15,6 +15,7 @@ export default class SwingGame {
 
     this.armMovement = 0;
     this.gui = new dat.GUI();
+    this.isGUIInitialized = false;
 
     AmmoLib().then((AmmoLib) => {
       this.Ammo = AmmoLib;
@@ -35,6 +36,21 @@ export default class SwingGame {
     // this.initInput();
   }
 
+  initGUI() {
+    if (!this.isGUIInitialized) {
+      this.isGUIInitialized = true;
+      const cameraFolder = this.gui.addFolder("camera");
+      const positionFolder = cameraFolder.addFolder("position");
+      positionFolder.add(this.camera.position, "x");
+      positionFolder.add(this.camera.position, "y");
+      positionFolder.add(this.camera.position, "z");
+      const rotationFolder = cameraFolder.addFolder("rotation");
+      rotationFolder.add(this.camera.rotation, "x");
+      rotationFolder.add(this.camera.rotation, "y");
+      rotationFolder.add(this.camera.rotation, "z");
+    }
+  }
+
   initGraphics() {
     this.container = document.getElementById("swing-container");
     console.log(this.container);
@@ -50,15 +66,7 @@ export default class SwingGame {
     this.scene.background = new THREE.Color(0x000a1c);
 
     this.camera.position.set(0, 290, 0);
-    const cameraFolder = this.gui.addFolder("camera");
-    const positionFolder = cameraFolder.addFolder("position");
-    positionFolder.add(this.camera.position, "x");
-    positionFolder.add(this.camera.position, "y");
-    positionFolder.add(this.camera.position, "z");
-    const rotationFolder = cameraFolder.addFolder("rotation");
-    rotationFolder.add(this.camera.rotation, "x");
-    rotationFolder.add(this.camera.rotation, "y");
-    rotationFolder.add(this.camera.rotation, "z");
+    this.initGUI();
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -67,7 +75,7 @@ export default class SwingGame {
     this.container.appendChild(this.renderer.domElement);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.target.set(0, 290, 0);
+    this.controls.target.set(0.1, 290, 0);
     this.controls.update();
 
     this.stats = new Stats();

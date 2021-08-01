@@ -5,6 +5,7 @@ import * as THREE from "three";
 export default class ProceduralCity {
   constructor(scene, renderer, gui) {
     this.gui = gui;
+    this.isGUIInitialized = false;
     this.scene = scene;
     this.renderer = renderer;
     this.settings = {
@@ -26,7 +27,7 @@ export default class ProceduralCity {
     return min + rnd * (max - min);
   }
 
-  texturizeCity(matrices) {
+  texturizeCity() {
     // get value from slider
 
     const texture = new THREE.Texture(this.generateTexture());
@@ -43,10 +44,7 @@ export default class ProceduralCity {
       this.settings.numberOfBuildings
     );
 
-    for (let i = 0; i < this.settings.numberOfBuildings; i++) {
-      this.cityMesh.setMatrixAt(i, matrices[i]);
-    }
-
+    this.updateCity();
     this.scene.add(this.cityMesh);
   }
 
@@ -121,49 +119,19 @@ export default class ProceduralCity {
   }
 
   buildLight() {
-    const hemLight = new THREE.HemisphereLight(0xfffff0, 0x101020, 1.25);
-    hemLight.position.set(0.75, 1, 0.25);
-    this.scene.add(hemLight);
+    if (!this.buildingLight) {
+      const hemLight = new THREE.HemisphereLight(0xfffff0, 0x101020, 1.25);
+      hemLight.position.set(0.75, 1, 0.25);
+      this.scene.add(hemLight);
 
-    this.buildingLight = new THREE.PointLight(0xffffff, 5.0);
-    this.scene.add(this.buildingLight);
+      this.buildingLight = new THREE.PointLight(0xffffff, 5.0);
+      this.scene.add(this.buildingLight);
+    }
   }
 
-  buildCity() {
-    this.buildLight();
-
-    this.gui.add(this.settings, "numberOfBuildings", 0, 5000, 100);
-    this.gui.add(this.settings, "maxHeight", 0, 40, 300);
-    this.gui.add(this.settings, "awakeness", 0, 1, 0.05);
-
-    // ground
-    const planeGeometry = new THREE.PlaneGeometry(10000, 10000, 32);
-    const planeMaterial = new THREE.MeshBasicMaterial({
-      color: 0x000000,
-      side: THREE.DoubleSide,
-    });
-    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.rotation.x = Math.PI / 2;
-    this.scene.add(plane);
-
-    // base geometry for buildings
-    this.cityGeometry = new THREE.BoxGeometry(1, 1, 1);
-
-    // translate pivot to the bottom
-    this.cityGeometry.applyMatrix4(
-      new THREE.Matrix4().makeTranslation(0, 0.5, 0)
-    );
-
-    // TODO: Remove bottom face
-    // Don't know why this fixes top UVs?
-    for (let i = 18; i < 20; i++) {
-      this.cityGeometry.attributes.uv.array[i] = 0;
-    }
-    this.cityGeometry.attributes.uv.needsUpdate = true;
-
-    // reset seed
-    Math.seed = 1;
+  getBuildingMatrices() {
     const matrices = [];
+    Math.seed = 1;
 
     for (let i = 0; i < this.settings.numberOfBuildings; i++) {
       const buildingMesh = new THREE.Mesh(this.cityGeometry);
@@ -192,12 +160,78 @@ export default class ProceduralCity {
       buildingMesh.scale.y = this.seededRandom() * maxHeight + maxHeight / 1.4;
 
       // add light to building
-      this.buildingLight.position.copy(buildingMesh.position);
-      this.scene.add(this.buildingLight);
+      // this.buildingLight.position.copy(buildingMesh.position);
+      // this.scene.add(this.buildingLight);
       buildingMesh.updateMatrix();
       matrices.push(buildingMesh.matrix);
     }
+    return matrices;
+  }
 
-    this.texturizeCity(matrices);
+  updateCity() {
+    if (this.cityMesh) {
+      const matrices = this.getBuildingMatrices();
+      for (let i = 0; i < this.settings.numberOfBuildings; i++) {
+        this.cityMesh.setMatrixAt(i, matrices[i]);
+      }
+      this.cityMesh.instanceMatrix.needsUpdate = true;
+      console.log("updated");
+    }
+  }
+
+  initializeGui() {
+    if (!this.isGUIInitialized) {
+      this.gui
+        .add(this.settings, "numberOfBuildings", 0, 5000, 100)
+        .onChange(() => {
+          if (this.cityMesh) {
+            this.scene.remove(this.cityMesh);
+          }
+          this.buildCity();
+        });
+      this.gui
+        .add(this.settings, "maxHeight", 40, 300, 10)
+        .onChange(() => this.updateCity());
+      this.gui
+        .add(this.settings, "awakeness", 0, 1, 0.05)
+        .onChange(() => this.texturizeCity());
+      this.isGUIInitialized = true;
+    }
+  }
+
+  buildCity() {
+    this.buildLight();
+
+    this.initializeGui();
+
+    // ground
+    const planeGeometry = new THREE.PlaneGeometry(10000, 10000, 32);
+    const planeMaterial = new THREE.MeshBasicMaterial({
+      color: 0x000000,
+      side: THREE.DoubleSide,
+    });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.rotation.x = Math.PI / 2;
+    this.scene.add(plane);
+
+    // base geometry for buildings
+    this.cityGeometry = new THREE.BoxGeometry(1, 1, 1);
+
+    // translate pivot to the bottom
+    this.cityGeometry.applyMatrix4(
+      new THREE.Matrix4().makeTranslation(0, 0.5, 0)
+    );
+
+    // TODO: Remove bottom face
+    // Don't know why this fixes top UVs?
+    for (let i = 18; i < 20; i++) {
+      this.cityGeometry.attributes.uv.array[i] = 0;
+    }
+    this.cityGeometry.attributes.uv.needsUpdate = true;
+
+    // reset seed
+    Math.seed = 1;
+
+    this.texturizeCity();
   }
 }
