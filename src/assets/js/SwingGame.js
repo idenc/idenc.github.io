@@ -2,8 +2,10 @@ import * as THREE from "three";
 import Stats from "./stats";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import AmmoLib from "ammo.js";
+import ProceduralCity from "./cityGenerator";
+import * as dat from "dat.gui";
 
-export default class Rope {
+export default class SwingGame {
   static gravityConstant = -9.8;
 
   constructor() {
@@ -12,11 +14,13 @@ export default class Rope {
     this.margin = 0.05;
 
     this.armMovement = 0;
+    this.gui = new dat.GUI();
 
     AmmoLib().then((AmmoLib) => {
       this.Ammo = AmmoLib;
 
       this.init();
+      new ProceduralCity(this.scene, this.renderer, this.gui);
       this.animate();
     });
   }
@@ -24,11 +28,11 @@ export default class Rope {
   init() {
     this.initGraphics();
 
-    this.initPhysics();
+    // this.initPhysics();
 
-    this.createObjects();
+    // this.createObjects();
 
-    this.initInput();
+    // this.initInput();
   }
 
   initGraphics() {
@@ -38,14 +42,23 @@ export default class Rope {
     this.camera = new THREE.PerspectiveCamera(
       60,
       window.innerWidth / window.innerHeight,
-      0.2,
-      2000
+      0.1,
+      1000
     );
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xbfd1e5);
+    this.scene.background = new THREE.Color(0x000a1c);
 
-    this.camera.position.set(-7, 5, 8);
+    this.camera.position.set(0, 290, 0);
+    const cameraFolder = this.gui.addFolder("camera");
+    const positionFolder = cameraFolder.addFolder("position");
+    positionFolder.add(this.camera.position, "x");
+    positionFolder.add(this.camera.position, "y");
+    positionFolder.add(this.camera.position, "z");
+    const rotationFolder = cameraFolder.addFolder("rotation");
+    rotationFolder.add(this.camera.rotation, "x");
+    rotationFolder.add(this.camera.rotation, "y");
+    rotationFolder.add(this.camera.rotation, "z");
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -54,30 +67,8 @@ export default class Rope {
     this.container.appendChild(this.renderer.domElement);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.target.set(0, 2, 0);
+    this.controls.target.set(0, 290, 0);
     this.controls.update();
-
-    // textureLoader = new THREE.TextureLoader();
-
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    this.scene.add(ambientLight);
-
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(-10, 10, 5);
-    light.castShadow = true;
-    const d = 10;
-    light.shadow.camera.left = -d;
-    light.shadow.camera.right = d;
-    light.shadow.camera.top = d;
-    light.shadow.camera.bottom = -d;
-
-    light.shadow.camera.near = 2;
-    light.shadow.camera.far = 50;
-
-    light.shadow.mapSize.x = 1024;
-    light.shadow.mapSize.y = 1024;
-
-    this.scene.add(light);
 
     this.stats = new Stats();
     this.stats.domElement.style.position = "absolute";
@@ -106,11 +97,11 @@ export default class Rope {
       this.softBodySolver
     );
     this.physicsWorld.setGravity(
-      new this.Ammo.btVector3(0, Rope.gravityConstant, 0)
+      new this.Ammo.btVector3(0, SwingGame.gravityConstant, 0)
     );
     this.physicsWorld
       .getWorldInfo()
-      .set_m_gravity(new this.Ammo.btVector3(0, Rope.gravityConstant, 0));
+      .set_m_gravity(new this.Ammo.btVector3(0, SwingGame.gravityConstant, 0));
 
     this.transformAux1 = new this.Ammo.btTransform();
   }
@@ -444,7 +435,7 @@ export default class Rope {
   render() {
     const deltaTime = this.clock.getDelta();
 
-    this.updatePhysics(deltaTime);
+    // this.updatePhysics(deltaTime);
 
     this.renderer.render(this.scene, this.camera);
   }

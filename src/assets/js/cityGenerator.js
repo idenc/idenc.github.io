@@ -1,20 +1,18 @@
 // Code based on PROCEDURALLY GENERATED CITY - A project by Johan Olsson
 // Linköping University (TNM084)
 import * as THREE from "three";
-import * as dat from "dat.gui";
 
 export default class ProceduralCity {
-  constructor(scene, renderer) {
-    this.gui = new dat.GUI();
+  constructor(scene, renderer, gui) {
+    this.gui = gui;
     this.scene = scene;
     this.renderer = renderer;
     this.settings = {
       numberOfBuildings: 1000,
-      height: 175,
+      maxHeight: 175,
       awakeness: 0.7,
     };
-    this.cityGroup = new THREE.Group();
-    this.cityGroup.add(this.cityGroup);
+    this.renderer.setClearColor(0x000a1c, 1);
     this.buildCity();
   }
 
@@ -28,21 +26,28 @@ export default class ProceduralCity {
     return min + rnd * (max - min);
   }
 
-  texturizeCity() {
+  texturizeCity(matrices) {
     // get value from slider
 
     const texture = new THREE.Texture(this.generateTexture());
-    texture.anisotropy = this.renderer.getMaxAnisotropy(); //https://blog.tojicode.com/2012/03/anisotropic-filtering-in-webgl.html - for details
+    texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy(); //https://blog.tojicode.com/2012/03/anisotropic-filtering-in-webgl.html - for details
     texture.needsUpdate = true;
 
     const material = new THREE.MeshLambertMaterial({
       map: texture,
-      vertexColors: THREE.VertexColors,
     });
 
-    const cityMesh = new THREE.Mesh(this.cityGeometry, material);
+    this.cityMesh = new THREE.InstancedMesh(
+      this.cityGeometry,
+      material,
+      this.settings.numberOfBuildings
+    );
 
-    this.cityGroup.add(cityMesh);
+    for (let i = 0; i < this.settings.numberOfBuildings; i++) {
+      this.cityMesh.setMatrixAt(i, matrices[i]);
+    }
+
+    this.scene.add(this.cityMesh);
   }
 
   generateTexture() {
@@ -69,16 +74,16 @@ export default class ProceduralCity {
         context.fillStyle = "#fcff72";
         let randVal, randVal2;
 
-        // decide how visable the lights will be depending on how close to the ground they are
+        // decide how visible the lights will be depending on how close to the ground they are
         if (y < canvas.height * 0.75) {
           randVal = this.seededRandom();
           randVal2 = this.seededRandom();
         } else if (y < canvas.height * 0.9) {
-          // less visable
+          // less visible
           randVal = this.seededRandom() * this.seededRandom();
           randVal2 = this.seededRandom() * this.seededRandom();
         } else {
-          // barely visable
+          // barely visible
           randVal =
             this.seededRandom() * this.seededRandom() * this.seededRandom();
           randVal2 =
@@ -118,18 +123,17 @@ export default class ProceduralCity {
   buildLight() {
     const hemLight = new THREE.HemisphereLight(0xfffff0, 0x101020, 1.25);
     hemLight.position.set(0.75, 1, 0.25);
-    this.cityGroup.add(hemLight);
+    this.scene.add(hemLight);
 
     this.buildingLight = new THREE.PointLight(0xffffff, 5.0);
-    this.cityGroup.add(this.buildingLight);
+    this.scene.add(this.buildingLight);
   }
 
-  buildCity(scene) {
-    this.cityGroup.clear();
+  buildCity() {
     this.buildLight();
 
     this.gui.add(this.settings, "numberOfBuildings", 0, 5000, 100);
-    this.gui.add(this.settings, "height", 0, 40, 300);
+    this.gui.add(this.settings, "maxHeight", 0, 40, 300);
     this.gui.add(this.settings, "awakeness", 0, 1, 0.05);
 
     // ground
@@ -140,36 +144,37 @@ export default class ProceduralCity {
     });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.x = Math.PI / 2;
-    scene.add(plane);
+    this.scene.add(plane);
 
     // base geometry for buildings
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    this.cityGeometry = new THREE.BoxGeometry(1, 1, 1);
 
     // translate pivot to the bottom
-    geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0.5, 0));
+    this.cityGeometry.applyMatrix4(
+      new THREE.Matrix4().makeTranslation(0, 0.5, 0)
+    );
 
-    // remove bottom (it's never seen anyway)
-    geometry.faces.splice(6, 2);
-    geometry.faceVertexUvs[0].splice(6, 2);
-
-    // fix UV mapping so that top face is not textured
-    geometry.faceVertexUvs[0][5][2].set(0, 0);
-    geometry.faceVertexUvs[0][4][2].set(0, 0);
-
-    const buildingMesh = new THREE.Mesh(geometry);
-    this.cityGeometry = new THREE.BufferGeometry();
+    // TODO: Remove bottom face
+    // Don't know why this fixes top UVs?
+    for (let i = 18; i < 20; i++) {
+      this.cityGeometry.attributes.uv.array[i] = 0;
+    }
+    this.cityGeometry.attributes.uv.needsUpdate = true;
 
     // reset seed
     Math.seed = 1;
+    const matrices = [];
 
     for (let i = 0; i < this.settings.numberOfBuildings; i++) {
+      const buildingMesh = new THREE.Mesh(this.cityGeometry);
       Math.seed++;
 
       // position of buildings
-      buildingMesh.position.x =
-        Math.floor(this.seededRandom() * 200 - 100) * 20;
-      buildingMesh.position.z =
-        Math.floor(this.seededRandom() * 200 - 100) * 20;
+      buildingMesh.position.set(
+        Math.floor(this.seededRandom() * 200 - 100) * 20,
+        buildingMesh.position.y,
+        Math.floor(this.seededRandom() * 200 - 100) * 20
+      );
 
       // size of buildings
       buildingMesh.scale.x =
@@ -187,14 +192,12 @@ export default class ProceduralCity {
       buildingMesh.scale.y = this.seededRandom() * maxHeight + maxHeight / 1.4;
 
       // add light to building
-      this.buildingLight.position = buildingMesh.position;
-      scene.add(this.buildingLight);
-
-      // merge it with cityGeometry - important for performance
+      this.buildingLight.position.copy(buildingMesh.position);
+      this.scene.add(this.buildingLight);
       buildingMesh.updateMatrix();
-      this.cityGeometry.merge(buildingMesh.geometry, buildingMesh.matrix);
+      matrices.push(buildingMesh.matrix);
     }
 
-    this.texturizeCity();
+    this.texturizeCity(matrices);
   }
 }

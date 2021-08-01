@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Rope from "@/assets/js/rope";
+import SwingGame from "@/assets/js/SwingGame";
 
 export default {
   name: "SwingGame",
@@ -13,7 +13,7 @@ export default {
     };
   },
   mounted() {
-    new Rope();
+    new SwingGame();
   },
 };
 </script>
