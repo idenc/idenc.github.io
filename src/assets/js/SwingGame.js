@@ -7,6 +7,7 @@ import * as dat from "dat.gui";
 
 export default class SwingGame {
   static gravityConstant = -9.8;
+  static backgroundColour = 0x000a1c;
 
   constructor() {
     this.clock = new THREE.Clock();
@@ -63,7 +64,8 @@ export default class SwingGame {
     );
 
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x000a1c);
+    this.scene.fog = new THREE.Fog(SwingGame.backgroundColour, 700, 900);
+    this.scene.background = new THREE.Color(SwingGame.backgroundColour);
 
     this.camera.position.set(0, 290, 0);
     this.initGUI();
