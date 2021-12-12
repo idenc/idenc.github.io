@@ -4,14 +4,14 @@
       <div :id="`card-${project.title}`" class="root card">
         <div id="header">
           <h1>{{ project.title }}</h1>
-          <div>
+          <div class="portfolio-links">
             <a
               v-if="project.project_link"
               class="header-icons"
               :href="`${project.project_link}`"
               target="_blank"
             >
-              <img src="@/assets/img/github.png" alt="github link" />
+              <img src="@/assets/img/github.svg" alt="github link" />
             </a>
             <a
               v-if="project.video_link"
@@ -206,5 +206,10 @@ p {
 .card {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0 0 50px rgba(0, 0, 0, 0.2);
   transform-style: preserve-3d;
+}
+
+.portfolio-links {
+  display: flex;
+  align-items: center;
 }
 </style>

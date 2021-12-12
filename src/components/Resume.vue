@@ -5,7 +5,7 @@
       <div id="info">
         <div id="link-imgs">
           <a href="https://github.com/idenc" target="_blank">
-            <img src="@/assets/img/github.png" alt="github link" />
+            <img src="@/assets/img/github.svg" alt="github link" />
           </a>
           <a href="https://www.linkedin.com/in/iden-craven" target="_blank">
             <img src="@/assets/img/linkedin.svg" alt="linkedin link" />
@@ -51,7 +51,7 @@
         <span class="bold">University of Calgary</span>
         <img
           id="ucalgary-img"
-          src="@/assets/img/ucalgary.png"
+          src="@/assets/img/ucalgary.svg"
           alt="UCalgary"
           style="height: 1.2em"
         />
@@ -64,21 +64,20 @@
       <hr />
       <h2><font-awesome-icon icon="code" /> Technologies</h2>
       <div id="tech-imgs">
-        <img src="@/assets/img/python.webp" alt="python" />
-        <img src="@/assets/img/C++.png" alt="C++" />
-        <img src="@/assets/img/Java.png" alt="Java" />
-        <img src="@/assets/img/javascript.png" alt="JavaScript" />
+        <img src="@/assets/img/python.svg" alt="python" />
+        <img src="@/assets/img/C++.svg" alt="C++" />
+        <img src="@/assets/img/java.svg" alt="Java" />
+        <img src="@/assets/img/javascript.svg" alt="JavaScript" />
         <img src="@/assets/img/HTML5.svg" alt="HTML5" />
         <img src="@/assets/img/CSS3.svg" alt="CSS3" />
-        <img src="@/assets/img/vue.png" alt="Vue.js" />
-        <img src="@/assets/img/node.png" alt="Node.js" />
-        <img src="@/assets/img/tensorflow.png" alt="Tensorflow" />
-        <img src="@/assets/img/pytorch.png" alt="PyTorch" />
+        <img src="@/assets/img/vue.svg" alt="Vue.js" />
+        <img src="@/assets/img/node.svg" alt="Node.js" />
+        <img src="@/assets/img/tensorflow.svg" alt="Tensorflow" />
         <img src="@/assets/img/android.svg" alt="Android" />
       </div>
       <div>
         5K+ lines: Python, C/C++, Java, JavaScript, HTML/CSS, Vue.js, Node.js,
-        Tensorflow, Pytorch, Android
+        Tensorflow, Android
       </div>
     </div>
   </div>
