@@ -1,5 +1,18 @@
 const experience = [
   {
+    jobTitle: "Software Developer",
+    companyName: "Arterys Inc.",
+    companyLink: "https://www.arterys.com/",
+    startDate: "June 2021",
+    endDate: "Current",
+    duties: [
+      "Led a squad to optimize our machine learning pipeline, reducing the runtime by half",
+      "Investigated and fixed bugs with both client-side JavaScript, and server-side Node.js",
+      "Implemented new image-processing features in the C++ backend",
+      "Wrote extensive unit & integration tests, and revamped a Jenkins continuous integration pipeline",
+    ],
+  },
+  {
     jobTitle: "Computer Vision Intern",
     companyName: "Au-Zone Technologies",
     companyLink: "https://www.embeddedml.com/",
