@@ -1043,16 +1043,19 @@ export default {
 }
 
 .animation-rear {
+  will-change: transform;
   bottom: 2rem;
   z-index: 1;
 }
 
 .animation-front {
+  will-change: transform;
   z-index: 2;
   bottom: 0;
 }
 
 .animation-trees {
+  will-change: transform;
   bottom: 0;
   z-index: 3;
 }

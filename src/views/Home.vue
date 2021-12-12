@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <div id="background" />
-    <div class="moving-clouds" />
+    <img
+      ref="clouds"
+      src="@/assets/img/clouds.webp"
+      class="clouds"
+      alt="cloud background"
+    />
     <ModalImage
       id="modal"
       :caption="modalCaption"
@@ -23,6 +28,7 @@ import Portfolio from "@/components/Portfolio";
 import ModalImage from "@/components/ModalImage";
 import Resume from "@/components/Resume";
 import Footer from "@/components/Footer";
+import * as TWEEN from "@tweenjs/tween.js";
 
 export default {
   name: "IdenHome",
@@ -53,6 +59,7 @@ export default {
         this.modalVisible = false;
       }
     });
+    this.startCloudLoop();
   },
   methods: {
     introSize: function () {
@@ -68,6 +75,17 @@ export default {
     },
     setModalVisible: function (visibility) {
       this.modalVisible = visibility;
+    },
+    startCloudLoop: function () {
+      const position = { x: 0 };
+      const clouds = this.$refs.clouds;
+      new TWEEN.Tween(position)
+        .to({ x: 3000 }, 30 * 1000)
+        .onUpdate(() => {
+          clouds.style.transform = `translate3d(${-position.x}px, 0, 0)`;
+        })
+        .repeat(Infinity)
+        .start();
     },
   },
 };
@@ -91,25 +109,13 @@ export default {
   background-size: cover;
 }
 
-.moving-clouds {
-  z-index: -1;
-  background: url("~@/assets/img/clouds.webp") repeat-x;
+.clouds {
+  z-index: 0;
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 43.75em;
-  -webkit-animation: cloudLoop 100000s linear infinite;
-  animation: cloudLoop 100000s linear infinite;
-}
-
-@keyframes cloudLoop {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 10000000px 0;
-  }
+  height: 100%;
+  will-change: transform;
 }
 
 #intro {

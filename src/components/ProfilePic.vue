@@ -27,10 +27,10 @@ export default {
   mounted: function () {
     // Loading
     const textureLoader = new THREE.TextureLoader();
-    const texture = textureLoader.load(
-      require("@/assets/img/me.webp"),
-      this.profilePicLoaded
-    );
+    const texture = textureLoader.load(require("@/assets/img/me.webp"), () => {
+      this.profilePicLoaded();
+      renderer.render(scene, camera);
+    });
     // Debug
     const gui = new dat.GUI();
     gui.domElement.id = "gui";
@@ -217,14 +217,15 @@ export default {
     });
 
     const tick = (time) => {
+      if (animPlaying) {
+        renderer.render(scene, camera);
+      }
       // Update objects
       if (!animPlaying && mouseIn) {
         combinedMesh.rotation.y = mouseX * MathUtils.degToRad(this.maxTilt);
+        renderer.render(scene, camera);
       }
       // combinedMesh.rotation.x = mouseY * this.degToRad(70);
-
-      // Render
-      renderer.render(scene, camera);
 
       // Call tick again on the next frame
       requestAnimationFrame(tick);
