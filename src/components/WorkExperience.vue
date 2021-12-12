@@ -2,7 +2,7 @@
   <div>
     <p style="font-weight: bold">
       {{ job.jobTitle }},
-      <a href="{{job.companyLink}}">{{ job.companyName }}</a>
+      <a :href="job.companyLink">{{ job.companyName }}</a>
     </p>
     <p>
       <font-awesome-icon icon="clock" /> {{ job.startDate }} - {{ job.endDate }}
