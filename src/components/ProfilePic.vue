@@ -1,5 +1,5 @@
 <template>
-  <canvas class="webgl" />
+  <canvas />
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   props: {},
   data() {
     return {
-      canvasSelector: "canvas.webgl",
+      canvasSelector: "#profile-pic",
       ringColour: new THREE.Color(0xffffff),
       skyColor: 0xcacaca,
       groundColor: 0x273640,
