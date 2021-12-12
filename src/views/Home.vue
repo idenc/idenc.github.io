@@ -25,7 +25,7 @@ import Resume from "@/components/Resume";
 import Footer from "@/components/Footer";
 
 export default {
-  name: "Home",
+  name: "IdenHome",
   components: {
     Footer,
     Resume,

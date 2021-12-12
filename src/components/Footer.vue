@@ -12,7 +12,7 @@
 <script>
 import Mountain from "@/components/Mountain";
 export default {
-  name: "Footer",
+  name: "IdenFooter",
   components: { Mountain },
 };
 </script>

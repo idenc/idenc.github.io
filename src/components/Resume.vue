@@ -88,7 +88,7 @@
 import WorkExperience from "@/components/WorkExperience";
 import experience from "@/assets/js/experience";
 export default {
-  name: "Resume",
+  name: "IdenResume",
   components: { WorkExperience },
   data() {
     return {
@@ -133,7 +133,7 @@ export default {
 }
 
 #resume-root {
-  font-family: "Roboto";
+  font-family: "Roboto", serif;
   font-size: 1.2em;
   margin: auto auto 40px;
 }
