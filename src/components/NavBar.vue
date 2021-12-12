@@ -42,8 +42,7 @@ export default {
     },
     closeNavMenu: function () {
       const burgerButton = document.getElementById("burger-button");
-      const evt = document.createEvent("MouseEvents");
-      evt.initEvent("mouseup", true, true);
+      const evt = new Event("MouseEvents", { bubbles: true, cancelable: true });
       burgerButton.dispatchEvent(evt);
       burgerButton.click();
     },
