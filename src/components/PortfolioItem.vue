@@ -28,12 +28,27 @@
         <p>{{ project.description }}</p>
 
         <img
-          id="img"
+          v-if="project.img && !project.img.endsWith('webm')"
           ref="img"
+          class="portfolio-image"
           :src="require(`@/assets/img/${project.img}`)"
           alt="{{ project.title }} image"
           @click.stop="imgClick"
         />
+        <video
+          v-else
+          autoplay
+          loop
+          muted
+          playsinline
+          class="portfolio-image"
+          @click.stop="imgClick"
+        >
+          <source
+            :src="require(`@/assets/img/${project.img}`)"
+            type="video/webm"
+          />
+        </video>
       </div>
     </div>
   </div>
@@ -92,9 +107,11 @@ export default {
       console.log(`rotX ${rotX}`);
       card.attr("style", `transform: rotateY(${rotY}deg) rotateX(${rotX}deg)`);
     },
-    imgClick: function () {
+    imgClick: function (el) {
+      console.log(el.target.src);
+      console.log(el.target.currentSrc);
       this.$emit("imgClick", {
-        imgSrc: this.$refs.img.src,
+        imgSrc: el.target.src || el.target.currentSrc,
         caption: this.project.title,
       });
     },
@@ -191,7 +208,7 @@ p {
   line-height: 1.6;
 }
 
-#img {
+.portfolio-image {
   border-radius: 40px;
   min-height: 0;
   align-self: center;

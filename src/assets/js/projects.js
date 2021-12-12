@@ -12,7 +12,7 @@ const projects = [
   },
   {
     title: "LISTR",
-    img: "LISTR.webp",
+    img: "LISTR.webm",
     description:
       "A concept real estate application developed in WPF as a group " +
       "project for a human computer interaction course. Provides a Tinder-style " +

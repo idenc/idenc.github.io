@@ -12,11 +12,14 @@
 
       <!-- Modal Content (The Image) -->
       <img
-        v-if="imgSrc"
+        v-if="imgSrc && !imgSrc.endsWith('.webm')"
         class="modal-content"
         :src="imgSrc"
         :alt="`${caption} img`"
       />
+      <video v-else autoplay loop muted playsinline class="model-content">
+        <source :src="imgSrc" type="video/webm" />
+      </video>
 
       <!-- Modal Caption (Image Text) -->
       <div id="caption">{{ caption }}</div>
