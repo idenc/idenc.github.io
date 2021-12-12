@@ -4,7 +4,7 @@
       <img
         id="logo"
         alt="logo"
-        src="@/assets/img/logo.png"
+        src="@/assets/img/logo.webp"
         @click="homeClick"
       />
       <nav id="links-div">

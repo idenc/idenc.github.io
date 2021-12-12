@@ -2,7 +2,7 @@
   <footer id="footer-root">
     <Mountain />
     <div id="footer-content">
-      <img src="../assets/img/logo.png" alt="logo" />
+      <img src="../assets/img/logo.webp" alt="logo" />
       <div class="vertical-divider"></div>
       <h1>Iden Craven</h1>
     </div>

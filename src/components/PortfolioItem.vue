@@ -20,7 +20,7 @@
               target="_blank"
               style="margin-left: 30px"
             >
-              <img src="@/assets/img/youtube.png" alt="video link" />
+              <img src="@/assets/img/youtube.svg" alt="video link" />
             </a>
           </div>
         </div>

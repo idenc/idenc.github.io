@@ -28,7 +28,7 @@ export default {
     // Loading
     const textureLoader = new THREE.TextureLoader();
     const texture = textureLoader.load(
-      require("@/assets/img/me.jpg"),
+      require("@/assets/img/me.webp"),
       this.profilePicLoaded
     );
     // Debug

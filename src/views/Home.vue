@@ -87,13 +87,13 @@ export default {
   top: 0;
   height: 110%;
   width: 100%;
-  background: url("~@/assets/img/forest.jpg");
+  background: url("~@/assets/img/forest.webp");
   background-size: cover;
 }
 
 .moving-clouds {
   z-index: -1;
-  background: url("~@/assets/img/clouds.png") repeat-x;
+  background: url("~@/assets/img/clouds.webp") repeat-x;
   position: fixed;
   bottom: 0;
   left: 0;

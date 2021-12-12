@@ -1,7 +1,7 @@
 const projects = [
   {
     title: "TOPH",
-    img: "toph.png",
+    img: "toph.webp",
     description:
       "A wearable navigation aid for the visually impaired. Uses machine learning " +
       "algorithms such as object detection, image classification, and face recognition " +
@@ -12,7 +12,7 @@ const projects = [
   },
   {
     title: "LISTR",
-    img: "LISTR.gif",
+    img: "LISTR.webp",
     description:
       "A concept real estate application developed in WPF as a group " +
       "project for a human computer interaction course. Provides a Tinder-style " +
@@ -23,7 +23,7 @@ const projects = [
 
   {
     title: "CatanJS",
-    img: "catan_board.png",
+    img: "catan_board.webp",
     description:
       "An online multiplayer version of the board game Catan using Vue.js for the frontend " +
       "and Node.js for the backend.",
@@ -31,7 +31,7 @@ const projects = [
   },
   {
     title: "Snapceit",
-    img: "snapceit.png",
+    img: "snapceit.webp",
     description:
       "An Android app which utilizes Google's MLKit to perform character" +
       " recognition on receipts to allow quick and easy bill-splitting between" +
@@ -40,7 +40,7 @@ const projects = [
   },
   {
     title: "Minesweeper",
-    img: "minesweeper.png",
+    img: "minesweeper.webp",
     description: "Minesweeper written using JQuery",
     project_link: "https://gitlab.com/idenc/minesweeper",
   },
