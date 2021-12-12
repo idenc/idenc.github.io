@@ -18,7 +18,7 @@ import projects from "@/assets/js/projects";
 import PortfolioItem from "@/components/PortfolioItem";
 
 export default {
-  name: "Portfolio",
+  name: "IdenPortfolio",
   components: { PortfolioItem },
   data() {
     return {

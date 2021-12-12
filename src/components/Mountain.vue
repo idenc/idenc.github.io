@@ -1004,7 +1004,7 @@
 <script>
 import * as TWEEN from "@tweenjs/tween.js";
 export default {
-  name: "Mountain",
+  name: "IdenMountain",
   mounted() {
     const trees = this.$refs.trees;
     const rear = this.$refs.rear;

@@ -22,7 +22,7 @@ import ScrollReveal from "scrollreveal";
 import ProfilePic from "@/components/ProfilePic";
 
 export default {
-  name: "Intro",
+  name: "IdenIntro",
   components: { ProfilePic },
   methods: {
     revealIntro: function () {
