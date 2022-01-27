@@ -19,7 +19,7 @@
     "dat.gui": "^0.7.7",
     "jquery": "^3.6.0",
     "scrollreveal": "^4.0.9",
-    "three": "^0.135.0",
+    "three": "^0.137.0",
     "vue": "^3.2.24"
   },
   "devDependencies": {
