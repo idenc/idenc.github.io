@@ -14,9 +14,9 @@
         <h1>Iden Craven</h1>
         <h2>Programmer</h2>
         <div id="info-bar">
-          <span><font-awesome-icon icon="map-marker-alt" /> Calgary, AB</span>
+          <span> Calgary, AB</span>
           <span
-            ><font-awesome-icon icon="envelope" />
+            ><font-awesome-icon icon="fa-solid fa-envelope" />
             <a href="mailto:iden.craven@gmail.com">
               iden.craven@gmail.com</a
             ></span
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <h2><font-awesome-icon icon="user" /> About Me</h2>
+      <h2><font-awesome-icon icon="fa-solid fa-user" /> About Me</h2>
       <hr />
       <p>
         Hi! I'm Iden Craven. I am a recent university graduate with a BSc
@@ -34,7 +34,9 @@
         technologies.
       </p>
 
-      <h2><font-awesome-icon icon="briefcase" /> Work Experience</h2>
+      <h2>
+        <font-awesome-icon icon="fa-solid fa-briefcase" /> Work Experience
+      </h2>
       <hr />
       <WorkExperience
         v-for="ex in experience"
@@ -42,7 +44,7 @@
         :job="ex"
       />
       <hr />
-      <h2><font-awesome-icon icon="graduation-cap" /> Education</h2>
+      <h2><font-awesome-icon icon="fa-solid fa-graduation-cap" /> Education</h2>
       <p>
         <span class="bold">Bachelor of Science</span> (Honours) First Class in
         Computer Science
@@ -62,7 +64,7 @@
       </p>
       <p><span class="bold">GPA:</span> 3.9</p>
       <hr />
-      <h2><font-awesome-icon icon="code" /> Technologies</h2>
+      <h2><font-awesome-icon icon="fa-solid fa-code" /> Technologies</h2>
       <div id="tech-imgs">
         <img src="@/assets/img/python.svg" alt="python" />
         <img src="@/assets/img/C++.svg" alt="C++" />

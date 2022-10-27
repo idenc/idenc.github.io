@@ -15,7 +15,7 @@
     <Intro id="intro" ref="intro" />
     <Portfolio @imgClick="imgClick" />
     <Resume />
-    <Footer />
+    <IdenFooter />
   </div>
 </template>
 
@@ -25,12 +25,12 @@ import Intro from "@/components/Intro";
 import Portfolio from "@/components/Portfolio";
 import ModalImage from "@/components/ModalImage";
 import Resume from "@/components/Resume";
-import Footer from "@/components/Footer";
+import IdenFooter from "@/components/IdenFooter";
 
 export default {
   name: "IdenHome",
   components: {
-    Footer,
+    IdenFooter,
     Resume,
     ModalImage,
     Portfolio,
@@ -80,7 +80,7 @@ export default {
 .home {
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #background {
